@@ -330,13 +330,13 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=None, minPitch=98, maxPitch=660, tonic=None, timeStep=0.01, octaveJumpCost=0.9, veryAccurate=True, ax=None, **kwargs): 
 	'''Returns pitch contour (in cents) for the audio
 
-	Calculates the pitch contour of a given audio sample using autocorrelation method described in _[1]. The implementation of the algorithm is done using [2]_ and it's Python API _[3]. The pitch contour is converted to cents by making the tonic correspond to 0 cents.
+	Calculates the pitch contour of a given audio sample using autocorrelation method described in [1]_. The implementation of the algorithm is done using [2]_ and it's Python API [3]_. The pitch contour is converted to cents by making the tonic correspond to 0 cents.
 
-	..[1] Paul Boersma (1993): "Accurate short-term analysis of the fundamental frequency and the harmonics-to-noise ratio of a sampled sound." Proceedings of the Institute of Phonetic Sciences 17: 97–110. University of Amsterdam.Available on http://www.fon.hum.uva.nl/paul/
+	.. [1] Paul Boersma (1993): "Accurate short-term analysis of the fundamental frequency and the harmonics-to-noise ratio of a sampled sound." Proceedings of the Institute of Phonetic Sciences 17: 97–110. University of Amsterdam.Available on http://www.fon.hum.uva.nl/paul/
 
-	..[2] Boersma, P., & Weenink, D. (2021). Praat: doing phonetics by computer [Computer program]. Version 6.1.38, retrieved 2 January 2021 from http://www.praat.org/
+	.. [2] Boersma, P., & Weenink, D. (2021). Praat: doing phonetics by computer [Computer program]. Version 6.1.38, retrieved 2 January 2021 from http://www.praat.org/
 
-	..[3] Jadoul, Y., Thompson, B., & de Boer, B. (2018). Introducing Parselmouth: A Python interface to Praat. Journal of Phonetics, 71, 1-15. https://doi.org/10.1016/j.wocn.2018.07.001
+	.. [3] Jadoul, Y., Thompson, B., & de Boer, B. (2018). Introducing Parselmouth: A Python interface to Praat. Journal of Phonetics, 71, 1-15. https://doi.org/10.1016/j.wocn.2018.07.001
 
 	..note ::
 		The audio signal is given in mono format to the pitch detection algorithm.
@@ -1331,7 +1331,7 @@ def subBandEner(X,fs,band):
 	return sbe
 
 def biphasicDerivative(x, hopDur, norm=True, rectify=True):
-	'''Computes the biphasic derivative of a signal(See _[1] for a detailed explanation of the algorithm).
+	'''Computes the biphasic derivative of a signal(See [1]_ for a detailed explanation of the algorithm).
 
 	.. [1] Rao, P., Vinutha, T.P. and Rohit, M.A., 2020. Structural Segmentation of Alap in Dhrupad Vocal Concerts. Transactions of the International Society for Music Information Retrieval, 3(1), pp.137–152. DOI: http://doi.org/10.5334/tismir.64
 	
