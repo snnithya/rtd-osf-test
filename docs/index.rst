@@ -10,9 +10,7 @@ Welcome to rtd-osf-test's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   utils
-   utils_cnn
-   utils_fmp
+   modules
 
 Indices and tables
 ==================
