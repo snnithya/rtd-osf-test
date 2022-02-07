@@ -85,8 +85,8 @@ def readCycleAnnotation(cyclePath, numDiv, startTime, duration, timeCol='Time', 
 
 			If ``numDiv`` is 0 or number of provided annotations is 1, an empty list is returned 
 
-		.. note ::
-			If there are no provided annotations present during the relevant duration of audio, the function will return (None, None)
+			.. note ::
+				If there are no provided annotations present during the relevant duration of audio, the function will return (None, None)
 	'''
 	
 	cycle_df = pd.read_csv(cyclePath)
@@ -1219,9 +1219,8 @@ def playVideo(video=None, videoPath=None, startTime=0, duration=None, destPath='
 			Used only when ``video`` is None.
 
 		videoOffset	: float
-			Number of seconds offset between video and audio files. This parameter is useful when the video is present only for an excerpt of the audio file.
+			Number of seconds offset between video and audio files. This parameter is useful when the video is present only for an excerpt of the audio file. :: 
 			
-			::
 				time in audio + ``videoOffset`` = time in video
 	Returns
 	-------
@@ -2032,7 +2031,7 @@ def generateVideoWSquares(vid_path, tapInfo, dest_path='Data/Temp/vidWSquares.mp
 		tapInfo    : list
 			
 			List of metadata associated with each handtap.
-			
+				
 			Metadata for each handtap consists of: 
 				- time    : float
 					time stamp of hand tap (in seconds).
@@ -2050,7 +2049,9 @@ def generateVideoWSquares(vid_path, tapInfo, dest_path='Data/Temp/vidWSquares.mp
 		vid_size    : (int, int)
 			
 			(width, height) of video to generate in pixels
+	
 	Returns
+	-------
 		None
 	'''
 
@@ -2139,6 +2140,7 @@ def generateVideo(annotationFile, onsetKeywords, vidPath='Data/Temp/VS_Shree_123
 			list of [R, G, B] colours used for each keyword
 	
 	Returns
+	-------
 		None
 	'''
 	annotations = pd.read_csv(annotationFile)
