@@ -28,7 +28,7 @@ author = 'rohit, nithya'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.intersphinx'
+    'sphinx.ext.autodoc', 'sphinx.ext.napoleon'
 ]
 
 autodoc_mock_imports = ["matplotlib", "torch", "numpy", "pandas", "librosa", "pandas", "seaborn", "scipy", "IPython", "parselmouth", "soundfile", "ffmpeg", "cv2"]
