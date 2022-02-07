@@ -338,7 +338,7 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 
 	.. [3] Jadoul, Y., Thompson, B., & de Boer, B. (2018). Introducing Parselmouth: A Python interface to Praat. Journal of Phonetics, 71, 1-15. https://doi.org/10.1016/j.wocn.2018.07.001
 
-	..note ::
+	.. note ::
 		The audio signal is given in mono format to the pitch detection algorithm.
 
 	Uses ``plotPitch()`` to plot pitch contour if ``ax`` is not None.
