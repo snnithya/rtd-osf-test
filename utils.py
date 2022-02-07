@@ -26,7 +26,7 @@ sns.set_theme(rc={"xtick.bottom" : True, "ytick.left" : False, "xtick.major.size
 
 # HELPER FUNCTION
 def __check_axes(axes):
-	"""Check if `axes` is an instance of an `matplotlib.axes.Axes` object. If not, use `plt.gca()`.
+	"""Check if ``axes`` is an instance of an ``matplotlib.axes.Axes`` object. If not, use ``plt.gca()``.
 	
 	This function is a modified version from [1]_.
 
@@ -39,7 +39,7 @@ def __check_axes(axes):
 		
 	elif not isinstance(axes, matplotlib.axes.Axes):
 		raise ValueError(
-			"`axes` must be an instance of matplotlib.axes.Axes. "
+			"``axes`` must be an instance of matplotlib.axes.Axes. "
 			"Found type(axes)={}".format(type(axes))
 		)
 	return axes
@@ -48,14 +48,14 @@ def __check_axes(axes):
 def readCycleAnnotation(cyclePath, numDiv, startTime, duration, timeCol='Time', labelCol='Cycle'):
 	'''Function to read cycle annotation and add divisions between markings if required.
 
-	This function reads the timestamps of provided annotations and adds `numDiv` 'computed' annotations between each provided annotation.
+	This function reads the timestamps of provided annotations and adds ``numDiv`` 'computed' annotations between each provided annotation.
 
 	Parameters
 	----------
 		cyclePath	: str, path object or file-like object
 			String path, os.PathLike object or file-like object (containing a read() method) pointing to the cycle annotation csv.
 
-			This value is passed to `pandas.read_csv()`.
+			This value is passed to ``pandas.read_csv()``.
 			
 		numDiv	: int >= 0
 			Number of equally spaced time stamps to add between consecutive provided annotations.
@@ -72,18 +72,18 @@ def readCycleAnnotation(cyclePath, numDiv, startTime, duration, timeCol='Time', 
 		labelCol	: str or None
 			Column name of labels for the annotations in the annotation file.
 
-			If None, only `timeCol` values will be returned.
+			If None, only ``timeCol`` values will be returned.
 
 
 	Returns
 	-------
 		provided	: pandas.DataFrame
-			Data frame contains the time stamps on annotations. If `labelCol` is not None, also returns respective labels of all provided annotations. 
+			Data frame contains the time stamps on annotations. If ``labelCol`` is not None, also returns respective labels of all provided annotations. 
 
 		computed	: list 
 			Timestamps of computed annotations (i.e. annotations computed between consecutive provided annotations).
 
-			If `numDiv` is 0 or number of provided annotations is 1, an empty list is returned 
+			If ``numDiv`` is 0 or number of provided annotations is 1, an empty list is returned 
 
 		.. note ::
 			If there are no provided annotations present during the relevant duration of audio, the function will return (None, None)
@@ -112,7 +112,7 @@ def readOnsetAnnotation(onsetPath, startTime, duration, timeCol='Inst', labelCol
 		onsetPath	: str, path object or file-like object
 			String path, os.PathLike object or file-like object (containing a read() method) pointing to the onset annotation csv.
 
-			This value is passed to `pandas.read_csv()`.
+			This value is passed to ``pandas.read_csv()``.
 		
 		startTime	: float
 			Start time of audio being analysed.
@@ -126,14 +126,14 @@ def readOnsetAnnotation(onsetPath, startTime, duration, timeCol='Inst', labelCol
 		labelCol	: str or None
 			Column name in the onset file to take onset labels from. 
 
-			If None, will return only values from the column `timeCol`.
+			If None, will return only values from the column ``timeCol``.
 
 	Returns
 	-------
 		provided	: pd.DataFrame
-			Dataframe with time stamps and labels (only if `labelCol` is not None) of the onsets
+			Dataframe with time stamps and labels (only if ``labelCol`` is not None) of the onsets
 
-			If `labelCol` is None, it will return only annotation time stamps.
+			If ``labelCol`` is None, it will return only annotation time stamps.
 
 			If no onsets are present in the given time duration, None is returned.
 	'''
@@ -150,40 +150,40 @@ def readOnsetAnnotation(onsetPath, startTime, duration, timeCol='Inst', labelCol
 def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetLabelKeyword=None, numDiv=0, startTime=0, duration=None, ax=None, annotLabel=True, cAnnot=['purple'], providedAlpha=0.8, computedAlpha=0.4, yAnnot=0.7, sizeAnnot=10, textColour=['white']):
 	'''Draws annotations on ax
 
-	Plots annotation labels on `ax` if provided, else creates a new matplotlib.axes.Axes object and adds the labels to that. 	
+	Plots annotation labels on ``ax`` if provided, else creates a new matplotlib.axes.Axes object and adds the labels to that. 	
 
 	Parameters
 	----------
 		cyclePath	: str, path object or file-like object
 			String path, os.PathLike object or file-like object (containing a read() method) pointing to the tala-related annotation csv.
 
-			This value is passed to `readCycleAnnotation()`
+			This value is passed to ``readCycleAnnotation()``
 
 		onsetPath	: str, path object or file-like object
 			String path, os.PathLike object or file-like object (containing a read() method) pointing to the non-tala related annotation csv (example: syllable or performance related annotations).
 			
-			This value is passed to `readOnsetAnnotation()`.
+			This value is passed to ``readOnsetAnnotation()``.
 
 			These annotations are only considered if cyclePath is None.
 		
 		onsetTimeKeyword	: list
 			List of column names in the onset file to take onset timestamps from.
 
-			Length of the list should be equal to the length of `onsetLabelKeyword` and `c`.
+			Length of the list should be equal to the length of ``onsetLabelKeyword`` and ``c``.
 
 		onsetLabelKeyword	: list or None
 			List of column names in the onset file to take annotation labels from. 
 			
-			If ``list`` is provided, labels will be drawn for each column name in the list. The length of the list should be equal to length of `onsetTimeKeyword` and `c`.
+			If list is provided, labels will be drawn for each column name in the list. The length of the list should be equal to length of ``onsetTimeKeyword`` and ``c``.
 			
 			If None, no labels will be plotted corresponding to the onsets (indicated by vertical lines).
 
-			If `annotLabel` is False, then `onsetLabelKeyword` can be None.
+			If ``annotLabel`` is False, then ``onsetLabelKeyword`` can be None.
 
 		numDiv	: int >= 0, default=0
 			Number of equally spaced time stamps to add between consecutive pairs of annotations.
 
-			Used only if `cyclePath` is not None. 
+			Used only if ``cyclePath`` is not None. 
 
 		startTime	: float >= 0, default=0
 			Starting timestamp from which to analyse the audio.
@@ -196,7 +196,7 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 		ax	: matplotlib.axes.Axes or None
 			matplotlib.axes.Axes object to plot in.
 
-			If None, will use `plt.gca()` to use the current matplotlib.axes.Axes object.
+			If None, will use ``plt.gca()`` to use the current matplotlib.axes.Axes object.
 
 		annotLabel	: bool, default=True
 			If True, will print annotation label along with a vertical line at the annotation time stamp
@@ -204,21 +204,21 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 			If False, will just add a vertical line at the annotation time stamp without the label.
 
 		cAnnot	: list (of color values) 	
-			Each value is passed as parameter `c` to `plt.axvline()`.
+			Each value is passed as parameter ``c`` to ``plt.axvline()``.
 
-			One color corresponds to one column name in `onsetTimeKeyword` and in `onsetLabelKeyword`. ::
+			One color corresponds to one column name in ``onsetTimeKeyword`` and in ``onsetLabelKeyword``. ::
 
 				len(onsetTimeKeyword) == len(onsetLabelKeyword) == len(c)
 
 		providedAlpha	: scalar or None
 			Controls opacity of the provided annotation lines drawn. Value must be within the range 0-1, inclusive.
 
-			Passed to `plt.axvline()` as the `alpha` parameter.
+			Passed to ``plt.axvline()`` as the ``alpha`` parameter.
 
 		computedAlpha	: scalar or None
 			Controls opacity of the computed annotation lines drawn. Value must be within the range 0-1, inclusive.
 
-			Passed to `plt.axvline()` as the `alpha` parameter.
+			Passed to ``plt.axvline()`` as the ``alpha`` parameter.
 
 		yAnnot	: float
 			Float value from 0-1, inclusive. 
@@ -226,10 +226,10 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 			Indicates where the label should occur on the y-axis. 0 indicates the lower ylim, 1 indicates the higher ylim.
 
 		sizeAnnot	: int
-			Font size for annotated text. Passed as `fontsize` parameter to `matplotlib.axes.Axes.annotate()`.
+			Font size for annotated text. Passed as ``fontsize`` parameter to ``matplotlib.axes.Axes.annotate()``.
 
 		textColour	: list
-			List of strings for each `onsetLabelKeyword`.
+			List of strings for each ``onsetLabelKeyword``.
 
 	Returns
 	-------
@@ -239,9 +239,9 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 	Raises
 	------
 		ValueError
-			- If the hyperparameters `onsetTimeKeyword`, `onsetLabelKeyword`, `c` and `textColour` are lists and do not have the same length.
+			- If the hyperparameters ``onsetTimeKeyword``, ``onsetLabelKeyword``, ``c`` and ``textColour`` are lists and do not have the same length.
 		
-			- If both `cyclePath` and `onsetPath` are None.
+			- If both ``cyclePath`` and ``onsetPath`` are None.
 		
 	'''
 	provided = [] 	# list of provided time stamps
@@ -300,7 +300,7 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 	ax = __check_axes(ax)
 	# pdb.set_trace()
 	if computed is not None:
-		# plot computed annotations, valid only when `cyclePath` is not None
+		# plot computed annotations, valid only when ``cyclePath`` is not None
 		for ind, computedArray in enumerate(computed):
 			if computedArray is not None:
 				# check that the array is not None
@@ -317,7 +317,7 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 					ax.axvline((providedVal[onsetTimeKeyword[i]]), linestyle='-', c=cAnnot[i], label=legendLabel if firstLabel and cyclePath is None else '', alpha=providedAlpha)  # add label only for first line of onset for each keyword
 					if firstLabel:  firstLabel = False 	# make firstLabel False after plotting the first line for each value in onsetLabelKeyword
 					if annotLabel:
-						ylims = ax.get_ylim()   # used to set label at a height defined by `y`.
+						ylims = ax.get_ylim()   # used to set label at a height defined by ``y``.
 						if isinstance(providedVal[onsetLabelKeyword[i]], str):
 							ax.annotate(f"{providedVal[onsetLabelKeyword[i]]}", (providedVal[onsetTimeKeyword[i]], (ylims[1]-ylims[0])*yAnnot + ylims[0]), bbox=dict(facecolor='grey', edgecolor='white'), c=textColour[i], fontsize=sizeAnnot)
 						else:
@@ -341,7 +341,7 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 	..note ::
 		The audio signal is given in mono format to the pitch detection algorithm.
 
-	Uses `plotPitch()` to plot pitch contour if `ax` is not None.
+	Uses ``plotPitch()`` to plot pitch contour if ``ax`` is not None.
 
 	Parameters
 	----------
@@ -350,7 +350,7 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 
 			Audio signal is converted to mono to compute the pitch.
 
-			If None, `audioPath` can not be None
+			If None, ``audioPath`` can not be None
 
 		sr	: number > 0; default=16000
 			If audio is not None, defines sample rate of audio time series.
@@ -362,9 +362,9 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 
 			Used only if audio is None. Audio is loaded as mono.
 
-			Sent to `librosa.load()` as `path`. 
+			Sent to ``librosa.load()`` as ``path``. 
 
-			If None, `audio` cannot be None.
+			If None, ``audio`` cannot be None.
 
 		startTime	: float; default=0
 			Time stamp to consider audio from.
@@ -373,18 +373,18 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 			Duration of the audio to consider.
 
 			If duration is None
-				- If `audio` is None, duration is inferred from the audio.
-				- If `audio` is None and `audioPath` is not None, the entire song is loaded.
+				- If ``audio`` is None, duration is inferred from the audio.
+				- If ``audio`` is None and ``audioPath`` is not None, the entire song is loaded.
 
 		minPitch	: float; default=98
 			Minimum pitch (in Hz) to read for contour extraction.
 
-			Passed as `pitch_floor` parameter to `parselmouth.Sound.to_pitch_ac()`.
+			Passed as ``pitch_floor`` parameter to ``parselmouth.Sound.to_pitch_ac()``.
 
 		maxPitch	: float; default=660
 			Maximum pitch to read for contour extraction.
 
-			Passed as `pitch_ceil` parameter to `parselmouth.Sound.to_pitch_ac()`.
+			Passed as ``pitch_ceil`` parameter to ``parselmouth.Sound.to_pitch_ac()``.
 
 		tonic	: float or None
 			Tonic of the audio (in Hz). Used to compute the pitch contour in cents. If float is given, returns pitch contour values in cents.
@@ -399,22 +399,22 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 		octaveJumpCost	: float
 			Degree of disfavouring of pitch changes, relative to maximum possible autocorrelation.
 
-			Passed as `octave_jump_cost` parameter to `praat.Sound.to_pitch_ac()`.
+			Passed as ``octave_jump_cost`` parameter to ``praat.Sound.to_pitch_ac()``.
 
 		veryAccurate	: bool
 			Determines the type and length of the window used in the pitch extraction algorithm.
 
-			Passed as `very_accurate` parameter to `praat.Sound.to_pitch_ac()`.
+			Passed as ``very_accurate`` parameter to ``praat.Sound.to_pitch_ac()``.
 
 		ax	: matplotlib.axes.Axes or None
 			Axes to plot the pitch contour in.
 
-		kwargs	: Additional arguements to `plotPitch()`.
+		kwargs	: Additional arguements to ``plotPitch()``.
 
 	Returns
 	-------
 		ax : matplotlib.axes.Axes
-			Plot of pitch contour if `ax` was not None
+			Plot of pitch contour if ``ax`` was not None
 
 		(p, t)	: (ndarray, ndarray)
 			Tuple with arrays of pitch values (in cents) and time stamps. Returned if ax was None.
@@ -452,26 +452,26 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 def plotPitch(p=None, t=None, is_cents=False, notes=None, ax=None, freqXlabels=5, xticks=False, yticks=True, xlabel=False, ylabel=True, title='Pitch Contour', annotate=False, ylim=None, c='blue',**kwargs):
 	'''Plots the pitch contour
 
-	Plots the pitch contour passed in the `p` parameter, computed from `pitchContour()`. 
+	Plots the pitch contour passed in the ``p`` parameter, computed from ``pitchContour()``. 
 
 	Parameters
 	----------
 		p	: ndarray
 			Pitch values (in cents).
 
-			Computed from `pitchContour()`
+			Computed from ``pitchContour()``
 
 		t	: ndarray or None
-			Time stamps (in seconds) corresponding to each value in `p`.
+			Time stamps (in seconds) corresponding to each value in ``p``.
 
-			If None, assumes time starts from 0 s with 0.01 s hops for each value in `p`.
+			If None, assumes time starts from 0 s with 0.01 s hops for each value in ``p``.
 
-			Computed from `pitchContour()`.
+			Computed from ``pitchContour()``.
 		
 		is_cents	: boolean; default=False
-			If True, indicates that `p` is in Cents.
+			If True, indicates that ``p`` is in Cents.
 
-			If False, indicates that `p` is in Hertz.
+			If False, indicates that ``p`` is in Hertz.
 
 		notes	: list or None
 			list of dictionaries with keys (``cents`` or ``hertz``) and ``label`` for each note present in the raga of the audio. Uses the ``label`` value as a yticklabel in the plot. ::
@@ -498,7 +498,7 @@ def plotPitch(p=None, t=None, is_cents=False, notes=None, ax=None, freqXlabels=5
 		ax	: matplotlib.axes.Axes or None
 			Object on which pitch contour is to be plotted
 
-			If None, will plot in `matplotlib.pyplot.gca()`.
+			If None, will plot in ``matplotlib.pyplot.gca()``.
 
 		freqXlabels	: int
 			Time (in seconds) after which each x ticklabel should occur
@@ -529,7 +529,7 @@ def plotPitch(p=None, t=None, is_cents=False, notes=None, ax=None, freqXlabels=5
 		c	: color
 			Colour of the pitch contour plotted.
 
-		kwargs	: additional arguements passed to `drawAnnotation()` if `annotate` is True.
+		kwargs	: additional arguements passed to ``drawAnnotation()`` if ``annotate`` is True.
 
 	Returns
 	-------
@@ -539,7 +539,7 @@ def plotPitch(p=None, t=None, is_cents=False, notes=None, ax=None, freqXlabels=5
 	Raises
 	------
 		ValueError
-			If `p` is None.
+			If ``p`` is None.
 	'''
 
 	# Check that all required parameters are present
@@ -549,7 +549,7 @@ def plotPitch(p=None, t=None, is_cents=False, notes=None, ax=None, freqXlabels=5
 		t = np.arange(0, len(p)*0.01, 0.01)
 	#TODO-Rohit: Added below block -> Nithya- I changed duration to take the difference between the last and first time step #Resolved
 	
-	# if ax is None, use the `plt.gca()` to use current axes object
+	# if ax is None, use the ``plt.gca()`` to use current axes object
 	ax = __check_axes(ax)
 	
 	ax = sns.lineplot(x=t, y=p, ax=ax, color=c)
@@ -559,7 +559,7 @@ def plotPitch(p=None, t=None, is_cents=False, notes=None, ax=None, freqXlabels=5
 	xticks=np.around(np.arange(math.ceil(t[0]), math.floor(t[-1]), freqXlabels)).astype(int),     # start the xticks such that each one corresponds to an integer with xticklabels
 	xticklabels=np.around(np.arange(math.ceil(t[0]), math.floor(t[-1]), freqXlabels)).astype(int) if xticks else []) 	# let the labels start from the integer values.
 
-	# set ylabel according to `is_cents` variable
+	# set ylabel according to ``is_cents`` variable
 	if is_cents:
 		ax.set(ylabel='Pitch (Cents)' if ylabel else '')
 	else:
@@ -567,7 +567,7 @@ def plotPitch(p=None, t=None, is_cents=False, notes=None, ax=None, freqXlabels=5
 	if notes is not None and yticks:
 		# add notes on the yticklabels if notes is not None
 
-		# keyword in the `notes` parameter to the get the pitch values of each note from
+		# keyword in the ``notes`` parameter to the get the pitch values of each note from
 		if is_cents:
 			notes_keyword = 'cents'
 		else:
@@ -589,7 +589,7 @@ def spectrogram(audio=None, sr=16000, audioPath=None, startTime=0, duration=None
 
 	Returns a plotted spectrogram if ax is not None, else returns the computed STFT on the audio.
 
-	Uses `librosa.display.specshow()` to plot the spectrogram.
+	Uses ``librosa.display.specshow()`` to plot the spectrogram.
 
 	Parameters
 	----------
@@ -598,7 +598,7 @@ def spectrogram(audio=None, sr=16000, audioPath=None, startTime=0, duration=None
 
 			Audio signal is converted to mono to compute the spectrogram.
 
-			If None, `audioPath` can not be None.
+			If None, ``audioPath`` can not be None.
 
 		sr	: number > 0; default=16000
 			If audio is not None, defines sample rate of audio time series.
@@ -610,9 +610,9 @@ def spectrogram(audio=None, sr=16000, audioPath=None, startTime=0, duration=None
 
 			Used only if audio is None. Audio is loaded as mono.
 
-			Sent to `librosa.load()` as `path` parameter. 
+			Sent to ``librosa.load()`` as ``path`` parameter. 
 
-			If None, `audio` cannot be None.
+			If None, ``audio`` cannot be None.
 
 		startTime	: float; default=0
 			Time stamp to consider audio from.
@@ -620,9 +620,9 @@ def spectrogram(audio=None, sr=16000, audioPath=None, startTime=0, duration=None
 		duration	: float or None; default=None
 			Duration of the audio to consider.
 
-			If `duration` is None
-				- If `audio` is None, duration is inferred from the audio.
-				- If `audio` is None and `audioPath` is not None, the entire song is loaded.
+			If ``duration`` is None
+				- If ``audio`` is None, duration is inferred from the audio.
+				- If ``audio`` is None and ``audioPath`` is not None, the entire song is loaded.
 
 		winSize    : int > 0
 			Size of window for STFT (in frames)
@@ -641,18 +641,18 @@ def spectrogram(audio=None, sr=16000, audioPath=None, startTime=0, duration=None
 			If None, returns (sample frequencies, segment times, STFT) of audio sample
 
 		amin	: float > 0
-			Minimum threshold for `abs(S)` and `ref` in `librosa.power_to_db()`. Controls the contrast of the spectrogram.
+			Minimum threshold for ``abs(S)`` and ``ref`` in ``librosa.power_to_db()``. Controls the contrast of the spectrogram.
 			
-			Passed into `librosa.power_to_db()` function.
+			Passed into ``librosa.power_to_db()`` function.
 
-		kwargs	: additional arguements passed to `plotSpectrogram()`.
+		kwargs	: additional arguements passed to ``plotSpectrogram()``.
 		
 	Returns
 	-------
 		ax	: matplotlib.axes.Axes or (ndarray, ndarray, ndarray)
-			If `ax` is not None, returns a plot of the spectrogram computed
+			If ``ax`` is not None, returns a plot of the spectrogram computed
 
-			If `ax` is None, returns a tuple with (sample frequencies, segment times, STFT of the audio (in dB)) computed by `scipy.signal.stft()`.
+			If ``ax`` is None, returns a tuple with (sample frequencies, segment times, STFT of the audio (in dB)) computed by ``scipy.signal.stft()``.
 	'''
 	
 	if audio is None:
@@ -661,7 +661,7 @@ def spectrogram(audio=None, sr=16000, audioPath=None, startTime=0, duration=None
 		duration = librosa.get_duration(audio, sr=sr)
 	
 	if nFFT is None:
-		nFFT = int(2**np.ceil(np.log2(winSize)))     # set value of `nFFT` if it is None.
+		nFFT = int(2**np.ceil(np.log2(winSize)))     # set value of ``nFFT`` if it is None.
 
 	# STFT
 	f,t,X = sig.stft(audio, fs=sr, window='hann', nperseg=winSize, noverlap=(winSize-hopSize), nfft=nFFT)
@@ -679,25 +679,25 @@ def spectrogram(audio=None, sr=16000, audioPath=None, startTime=0, duration=None
 def plotSpectrogram(X_dB, t, f, sr=16000, hopSize=160, cmap='Blues', ax=None, freqXlabels=5, freqYlabels=2000, xticks=False, yticks=True, xlabel=False, ylabel=True, title='Spectrogram', annotate=True, ylim=None, **kwargs): 
 	'''Plots spectrogram
 
-	Uses `librosa.display.specshow()` to plot a spectrogram from a computed STFT. Annotations can be added is `annotate` is True.
+	Uses ``librosa.display.specshow()`` to plot a spectrogram from a computed STFT. Annotations can be added is ``annotate`` is True.
 
 	Parameters
 	----------
 	X_dB	: ndarray
-		STFT of audio. Computed in `spectrogram()`.
+		STFT of audio. Computed in ``spectrogram()``.
 
 	t	: ndarray or None
-		Time segments corresponding to `X_dB`.
+		Time segments corresponding to ``X_dB``.
 
 		If None, will assign time steps from 0 (in seconds).
 	
 	f	: ndarray
-		Frequency values. Computed in `spectrogram()`.
+		Frequency values. Computed in ``spectrogram()``.
 
 		If None, will infer frequency values in a linear scale.
 
 	sr	: number > 0; default=16000
-		Sample rate of audio processed in `spectrogram()`.
+		Sample rate of audio processed in ``spectrogram()``.
 
 	hopSize	: int > 0
 		Size of hop for STFT (in frames)
@@ -705,12 +705,12 @@ def plotSpectrogram(X_dB, t, f, sr=16000, hopSize=160, cmap='Blues', ax=None, fr
 	cmap	: matplotlib.colors.Colormap or str
 		Colormap to use to plot spectrogram.
 
-		Sent as a parameter to `plotSpectrogram`.
+		Sent as a parameter to ``plotSpectrogram``.
 
 	ax	: matplotlib.axes.Axes or None
 		Axes to plot spectrogram in. 
 
-		If None, plots the spectrogram returned by `plt.gca()`.
+		If None, plots the spectrogram returned by ``plt.gca()``.
 
 	freqXlabels	: float > 0
 		Time (in seconds) after which each x label occurs in the plot
@@ -741,7 +741,7 @@ def plotSpectrogram(X_dB, t, f, sr=16000, hopSize=160, cmap='Blues', ax=None, fr
 		
 		If None, the range is set to (0, sr//2)
 
-	kwargs	: Additional arguements provided to `drawAnnotation()` if `annotate` is True.
+	kwargs	: Additional arguements provided to ``drawAnnotation()`` if ``annotate`` is True.
 	
 	'''
 	 #Resolved # TODO-Rohit: for some reason, below line is throwing an error due to x_coords and y_coords; I'm passing o/ps X,t,f from spectrogram function; if x_coords, y_coords not passed then function plots without error; need to debug
@@ -773,7 +773,7 @@ def plotSpectrogram(X_dB, t, f, sr=16000, hopSize=160, cmap='Blues', ax=None, fr
 def drawWave(audio=None, sr=16000, audioPath=None, startTime=0, duration=None, ax=None, xticks=False, yticks=True, xlabel=False, ylabel=True, title='Waveform', freqXlabels=5, annotate=False, odf=False, winSize_odf=640, hopSize_odf=160, nFFT_odf=1024, source_odf='vocal', cOdf='black', ylim=None, **kwargs): 
 	'''Plots the wave plot of the audio
 
-	Plots the waveform of the given audio using `librosa.display.waveshow()`.
+	Plots the waveform of the given audio using ``librosa.display.waveshow()``.
 
 	Parameters
 	----------
@@ -790,9 +790,9 @@ def drawWave(audio=None, sr=16000, audioPath=None, startTime=0, duration=None, a
 
 			Used only if audio is None. Audio is loaded as mono.
 
-			Sent to `librosa.load()` as `path` parameter. 
+			Sent to ``librosa.load()`` as ``path`` parameter. 
 
-			If None, `audio` cannot be None.
+			If None, ``audio`` cannot be None.
 
 		startTime	: float; default=0
 			Time stamp to consider audio from.
@@ -801,13 +801,13 @@ def drawWave(audio=None, sr=16000, audioPath=None, startTime=0, duration=None, a
 			Duration of the audio to consider.
 
 			If duration is None
-				- If `audio` is None, duration is inferred from the audio.
-				- If `audio` is None and `audioPath` is not None, the entire song is loaded.
+				- If ``audio`` is None, duration is inferred from the audio.
+				- If ``audio`` is None and ``audioPath`` is not None, the entire song is loaded.
 
 		ax	: matplotlib.axes.Axes or None
 			Axes to plot waveplot in.
 
-			If None, will plot the object in `plt.gca()`
+			If None, will plot the object in ``plt.gca()``
 
 		xticks	: bool
 			If True, will add xticklabels to plot.
@@ -833,41 +833,41 @@ def drawWave(audio=None, sr=16000, audioPath=None, startTime=0, duration=None, a
 		odf	: bool
 			If True, will plot the onset detection function over the wave form.
 
-			Uses `getODF()` to compute ODF.
+			Uses ``getODF()`` to compute ODF.
 
 		winSize_odf    : int
 			Window size (in frames) used by the onset detection function.
 
-			If `odf` is True, passed to the `getODF()` function.
+			If ``odf`` is True, passed to the ``getODF()`` function.
 
 		hopSize_odf    : int
 			Hop size (in frames) used by the onset detection function.
 
-			If `odf` is True, passed to the `getODF()` function.
+			If ``odf`` is True, passed to the ``getODF()`` function.
 
 		nFFT_odf    : int
 			Size of DFT used in onset detection function.
 
-			If `odf` is True, passed to the `getODF()` function.
+			If ``odf`` is True, passed to the ``getODF()`` function.
 
 		source_odf	: str
 			Defines type of instrument in the audio. Accepted values are:
 			- 'vocal'
 			- 'pakhawaj'
 			
-			Used in the `getODF()` only if `odf` is True.
+			Used in the ``getODF()`` only if ``odf`` is True.
 
 		cOdf	: color 
 			Colour to plot onset detection function in.
 
-			If `odf` is True, passed to the `getODF()` function.
+			If ``odf`` is True, passed to the ``getODF()`` function.
 
 		ylim	: (float, float) or None
 			(min, max) limits for the y axis.
 			
 			If None, will be directly interpreted from the data.
 
-		kwargs	: Additional arguements passed to `drawAnnotation()` if `annotate` is True.
+		kwargs	: Additional arguements passed to ``drawAnnotation()`` if ``annotate`` is True.
 	
 	Returns
 	-------
@@ -910,9 +910,9 @@ def drawWave(audio=None, sr=16000, audioPath=None, startTime=0, duration=None, a
 def plotODF(audio=None, sr=16000, audioPath=None, odf=None, startTime=0, duration=None, ax=None, winSize_odf=640, hopSize_odf=160, nFFT_odf=1024, source_odf='vocal', cOdf='black', updatePlot=False, xlabel=False, ylabel=False, xticks=False, yticks=False, title='Onset Detection Function', freqXlabels=5, ylim=True, annotate=False, **kwargs):
 	#Resolved #TODO-Rohit: added additional 'odf' parameter; in the spirit of separating our computation and plotting functions, this function should also ideally just plot odf, given odf as a parameter. But for now, I've added odf as a parameter and not removed audio input.
 	'''
-	Plots onset detection function if `ax` is provided. Function comes from `getODF()`.
+	Plots onset detection function if ``ax`` is provided. Function comes from ``getODF()``.
 	
-	If `ax` is None, function returns a tuple with 2 arrays - onset detection function values and time stamps
+	If ``ax`` is None, function returns a tuple with 2 arrays - onset detection function values and time stamps
 
 	Parameters
 	----------
@@ -929,14 +929,14 @@ def plotODF(audio=None, sr=16000, audioPath=None, odf=None, startTime=0, duratio
 
 			Used only if audio is None. Audio is loaded as mono.
 
-			Sent to `librosa.load()` as `path` parameter. 
+			Sent to ``librosa.load()`` as ``path`` parameter. 
 
-			If None, `audio` cannot be None.
+			If None, ``audio`` cannot be None.
 
 		odf : ndarray
 			Extracted onset detection function, if already available
 			
-			Can be obtained using `getODF()` function
+			Can be obtained using ``getODF()`` function
 
 		startTime	: float; default=0
 			Time stamp to consider audio from.
@@ -944,9 +944,9 @@ def plotODF(audio=None, sr=16000, audioPath=None, odf=None, startTime=0, duratio
 		duration	: float or None; default=None
 			Duration of the audio to consider.
 
-			If `duration` is None
-				- If `audio` is None, duration is inferred from the audio.
-				- If `audio` is None and `audioPath` is not None, the entire song is loaded.
+			If ``duration`` is None
+				- If ``audio`` is None, duration is inferred from the audio.
+				- If ``audio`` is None and ``audioPath`` is not None, the entire song is loaded.
 
 		ax	: matplotlib.axes.Axes
 			Axes object to plot waveplot in.
@@ -954,29 +954,29 @@ def plotODF(audio=None, sr=16000, audioPath=None, odf=None, startTime=0, duratio
 		winSize_odf    : int
 			Window size (in frames) used by the onset detection function.
 
-			If `odf` is True, passed to the `getODF()` function.
+			If ``odf`` is True, passed to the ``getODF()`` function.
 
 		hopSize_odf    : int
 			Hop size (in frames) used by the onset detection function.
 
-			If `odf` is True, passed to the `getODF()` function.
+			If ``odf`` is True, passed to the ``getODF()`` function.
 
 		nFFT_odf    : int
 			Size of DFT used in onset detection function.
 
-			If `odf` is True, passed to the `getODF()` function.
+			If ``odf`` is True, passed to the ``getODF()`` function.
 
 		source_odf	: str
 			Defines type of instrument in the audio. Accepted values are:
 			- 'vocal'
 			- 'pakhawaj'
 			
-			Used in the `getODF()` only if `odf` is True.
+			Used in the ``getODF()`` only if ``odf`` is True.
 
 		cOdf	: color 
 			Colour to plot onset detection function in.
 
-			If `odf` is True, passed to the `getOnsetActivation()` function.
+			If ``odf`` is True, passed to the ``getOnsetActivation()`` function.
 
 		updatePlot  : bool
 			If odf being plotting on figure with waveform, then retain axis labels and properties
@@ -1007,15 +1007,15 @@ def plotODF(audio=None, sr=16000, audioPath=None, odf=None, startTime=0, duratio
 		annotate	: boolean
 			If True, will annotate markings in either cyclePath or onsetPath with preference to cyclePath.
 
-		kwargs	: Additional arguements passed to `drawAnnotation()` if `annotate` is True.
+		kwargs	: Additional arguements passed to ``drawAnnotation()`` if ``annotate`` is True.
 
 	Returns
 	-------
 		ax	: matplotlib.axes.Axes)
-			If `ax` is not None, returns a plot
+			If ``ax`` is not None, returns a plot
 		
 		(odf_vals, time_vals): (ndarray, ndarray)
-			If `ax` is None, returns a tuple with ODF values and time stamps.
+			If ``ax`` is None, returns a tuple with ODF values and time stamps.
 	'''
 
 	if odf is None:
@@ -1087,17 +1087,17 @@ def playAudio(audio=None, sr=16000, audioPath=None, startTime=0, duration=None):
 
 			Used only if audio is None. Audio is loaded as mono.
 
-			Sent to `librosa.load()` as `path` parameter.
+			Sent to ``librosa.load()`` as ``path`` parameter.
 
-			If None, `audio` cannot be None.
+			If None, ``audio`` cannot be None.
 
 		startTime	: float; default=0
 			Time stamp to consider audio from.
 
 		duration	: float or None; default=None
 			If duration is None
-				- If `audio` is None, duration is inferred from the audio.
-				- If `audio` is None and `audioPath` is not None, the entire song is loaded.
+				- If ``audio`` is None, duration is inferred from the audio.
+				- If ``audio`` is None and ``audioPath`` is not None, the entire song is loaded.
 	Returns
 	-------
 		iPython.display.Audio 
@@ -1112,7 +1112,7 @@ def playAudio(audio=None, sr=16000, audioPath=None, startTime=0, duration=None):
 def playAudioWClicks(audio=None, sr=16000, audioPath=None, startTime=0, duration=None, onsetFile=None, onsetLabels=['Inst', 'Tabla'], destPath=None):
 	'''Plays relevant part of audio along with clicks at timestamps of each of the onsetLabels provided.
 
-	If `destPath` is not None, generated audio is saved at `destPath`, else the generated audio is returned as a `iPython.display.Audio` object.
+	If ``destPath`` is not None, generated audio is saved at ``destPath``, else the generated audio is returned as a ``iPython.display.Audio`` object.
 
 	Parameters
 	----------
@@ -1129,17 +1129,17 @@ def playAudioWClicks(audio=None, sr=16000, audioPath=None, startTime=0, duration
 
 			Used only if audio is None. Audio is loaded as mono.
 
-			Sent to `librosa.load()` as `path` parameter.
+			Sent to ``librosa.load()`` as ``path`` parameter.
 
-			If None, `audio` cannot be None.
+			If None, ``audio`` cannot be None.
 
 		startTime	: float
 			Time stamp to consider audio from.
 
 		duration	: float or None; default=None
 			If duration is None
-				- If `audio` is None, duration is inferred from the audio.
-				- If `audio` is None and `audioPath` is not None, the entire song is loaded.
+				- If ``audio`` is None, duration is inferred from the audio.
+				- If ``audio`` is None and ``audioPath`` is not None, the entire song is loaded.
 		
 		onsetFile	: str
 			File path to csv onset time stamps.
@@ -1185,44 +1185,44 @@ def playAudioWClicks(audio=None, sr=16000, audioPath=None, startTime=0, duration
 def playVideo(video=None, videoPath=None, startTime=0, duration=None, destPath='Data/Temp/VideoPart.mp4', videoOffset=0):
 	'''Plays relevant part of a given video.
 
-	If `duration` is None and `startTime` is 0, the entire Video is returned. 
+	If ``duration`` is None and ``startTime`` is 0, the entire Video is returned. 
 	
-	If `duration` is not None or `startTime` is not 0, the video is cut using the `ffmpeg` Python library and is stored in `destPath`. 
+	If ``duration`` is not None or ``startTime`` is not 0, the video is cut using the ``ffmpeg`` Python library and is stored in ``destPath``. 
 
 	Parameters
 	----------
 		video	: ndarray or None
 			Loaded video sample. 
 
-			When `video` is not None, all the other parameters in the function are not considered. If a trimmed video is needed, please use `videoPath` instead.
+			When ``video`` is not None, all the other parameters in the function are not considered. If a trimmed video is needed, please use ``videoPath`` instead.
 
-			If None, `videoPath` will be used to load the video.
+			If None, ``videoPath`` will be used to load the video.
 
 		videoPath	: str
 			Path to video file.
 
-			Passed to `data` parameter in `Video()`.
+			Passed to ``data`` parameter in ``Video()``.
 
 		startTime	: float
 			Time to start reading the video from. 
 			
-			Used only when `video` is None.
+			Used only when ``video`` is None.
 		
 		duration	: float
 			Duration of the video to load.
 
-			Used only when `video` is None.
+			Used only when ``video`` is None.
 
 		destPath	: str or None
 			Path to store shortened video.
 
-			Used only when `video` is None.
+			Used only when ``video`` is None.
 
 		videoOffset	: float
 			Number of seconds offset between video and audio files. This parameter is useful when the video is present only for an excerpt of the audio file.
 			
 			::
-				time in audio + `videoOffset` = time in video
+				time in audio + ``videoOffset`` = time in video
 	Returns
 	-------
 		iPython.display.Video 
@@ -1231,7 +1231,7 @@ def playVideo(video=None, videoPath=None, startTime=0, duration=None, destPath='
 	Raises
 	------
 		ValueError
-			If `destPath` is None, when `startTime` != 0 or `duration` is not None.
+			If ``destPath`` is None, when ``startTime`` != 0 or ``duration`` is not None.
 	'''
 	if video is None:
 		if duration is None and startTime == 0:
@@ -1271,14 +1271,14 @@ def generateFig(noRows, figSize=(14, 7), heightRatios=None):
 		figSize	: (float, float)
 			(width, height) in inches of the figure.
 
-			Passed to `matplotlib.figure.Figure()`.
+			Passed to ``matplotlib.figure.Figure()``.
 
 		heightRatios	: list or None
 			List of heights that each plot in the figure should take. Relative height of each row is determined by ``heightRatios[i] / sum(heightRatios)``.
 
-			Passed to `matplotlib.figure.Figure.add_gridspec()` as the parameter `height_ratios`.
+			Passed to ``matplotlib.figure.Figure.add_gridspec()`` as the parameter ``height_ratios``.
 			
-			..note ::
+			.. note ::
 				len(heightRatios) has to be equal to noRows
 
 	Returns
@@ -1331,7 +1331,9 @@ def subBandEner(X,fs,band):
 	return sbe
 
 def biphasicDerivative(x, hopDur, norm=True, rectify=True):
-	'''Computes the biphasic derivative of a signal(See [1] for a detailed explanation of the algorithm).
+	'''Computes the biphasic derivative of a signal(See _[1] for a detailed explanation of the algorithm).
+
+	.. [1] Rao, P., Vinutha, T.P. and Rohit, M.A., 2020. Structural Segmentation of Alap in Dhrupad Vocal Concerts. Transactions of the International Society for Music Information Retrieval, 3(1), pp.137–152. DOI: http://doi.org/10.5334/tismir.64
 	
 	Parameters
 	----------
@@ -1676,7 +1678,7 @@ def intensityContour(audio=None, sr=16000, audioPath=None, startTime=0, duration
 
 	.. [2] Jadoul, Y., Thompson, B., & de Boer, B. (2018). Introducing Parselmouth: A Python interface to Praat. Journal of Phonetics, 71, 1-15. https://doi.org/10.1016/j.wocn.2018.07.001
 
-	Uses `plotIntensity()` to plot the contour is `ax` is not None. 
+	Uses ``plotIntensity()`` to plot the contour is ``ax`` is not None. 
 
 	Parameters
 	----------
@@ -1693,41 +1695,41 @@ def intensityContour(audio=None, sr=16000, audioPath=None, startTime=0, duration
 
 			Used only if audio is None. Audio is loaded as mono.
 
-			Sent to `librosa.load()` as `path` parameter.
+			Sent to ``librosa.load()`` as ``path`` parameter.
 
-			If None, `audio` cannot be None.
+			If None, ``audio`` cannot be None.
 
 		startTime    : float; default=0
 			Time stamp to consider audio from
 
 		duration    : float or None; default=None
 			If duration is None
-				- If `audio` is None, duration is inferred from the audio.
-				- If `audio` is None and `audioPath` is not None, the entire song is loaded.
+				- If ``audio`` is None, duration is inferred from the audio.
+				- If ``audio`` is None and ``audioPath`` is not None, the entire song is loaded.
 
 		minPitch    : float; default=98
 			Minimum pitch (in Hz) to read for contour extraction.
 
-			Passed as `minimum_pitch` parameter to `parselmouth.Sound.to_intensity()`.
+			Passed as ``minimum_pitch`` parameter to ``parselmouth.Sound.to_intensity()``.
 
 		timeStep    : float; default=0.01
 			Time steps (in seconds) in which pitch values are extracted. ::
 
 				Example: timeStep = 0.01 implies that pitch values are extracted for every 0.01 s.
 
-			Passed as `time_step` parameter to `parselmouth.Sound.to_intensity()`.
+			Passed as ``time_step`` parameter to ``parselmouth.Sound.to_intensity()``.
 
 		ax    : matplotlib.axes.Axes or None
 			Axes object to plot the intensity contour in.
 
 			If None, will return a tuple with (intensity contour, time steps)
 
-		kwargs	: Additional arguements passed to `plotIntensity()`.
+		kwargs	: Additional arguements passed to ``plotIntensity()``.
 
 	Returns
 	-------
 		ax : matplotlib.axes.Axes
-			Plot of intensity contour if `ax` was not None
+			Plot of intensity contour if ``ax`` was not None
 
 		(intensityVals, t)    : (ndarray, ndarray)
 			Tuple with arrays of intensity values (in dB) and time stamps. Returned if ax was None.
@@ -1752,32 +1754,32 @@ def intensityContour(audio=None, sr=16000, audioPath=None, startTime=0, duration
 
 # PLOTTING FUNCTION
 def plotIntensity(intensityVals=None, t=None, ax=None, startTime=0, duration=None, freqXlabels=5, xticks=False, yticks=True, xlabel=False, ylabel=True, title='Intensity Contour', annotate=False, ylim=None, c='yellow', **kwargs):
-	'''Function to plot a computed intensity contour from `intensityContour()` function. 
+	'''Function to plot a computed intensity contour from ``intensityContour()`` function. 
 
 	Parameters
 	----------
 		intensityVals    : ndarray
-			Intensity contour from `intensityContour()`
+			Intensity contour from ``intensityContour()``
 
 		t    : ndarray
-			Time steps corresponding to the `intensityVals` from `intensityContour`
+			Time steps corresponding to the ``intensityVals`` from ``intensityContour``
 
 		ax    : matplotlib.axes.Axes or None
 			Object on which intensity contour is to be plotted
 
-			If None, will plot in `matplotlib.pyplot.gca()`.
+			If None, will plot in ``matplotlib.pyplot.gca()``.
 
 		startTime    : float >= 0
 			Offset time (in seconds) from where audio is analysed.
 
-			Sent to `drawAnnotation()`.
+			Sent to ``drawAnnotation()``.
 
 		duration    : float >= 0 or None
 			Duration of audio in the plot.
 
 			If None, will consider the entire audio.
 
-			Sent to `drawAnnotation()`.
+			Sent to ``drawAnnotation()``.
 
 		freqXlabels    : int
 			Time (in seconds) after which each x ticklabel should occur
@@ -1785,7 +1787,7 @@ def plotIntensity(intensityVals=None, t=None, ax=None, startTime=0, duration=Non
 		annotate    : bool
 			If true will mark annotations provided in the plot.
 
-			Send to `drawAnnotation()`.
+			Send to ``drawAnnotation()``.
 
 		ylim    : (float, float) or None
 			(min, max) limits for the y axis.
@@ -1795,7 +1797,7 @@ def plotIntensity(intensityVals=None, t=None, ax=None, startTime=0, duration=Non
 		c	: color
 			Specifies the colour of the plotted intensity contour.
 
-		kwargs	: Additional arguements passed to `drawAnnotation()` if `annotate` is True.
+		kwargs	: Additional arguements passed to ``drawAnnotation()`` if ``annotate`` is True.
 
 	Returns
 	-------
@@ -1834,7 +1836,7 @@ def plot_hand(annotationFile=None, startTime=0, duration=None, vidFps=25, ax=Non
 
 	Using Openpose annotations, this function plots the height of each hand's wrist vs time. 
 
-	If `ax` is None, this will on `plt.gca()`, i.e. the current axes being used
+	If ``ax`` is None, this will on ``plt.gca()``, i.e. the current axes being used
 	
 	Parameters
 	----------
@@ -1853,7 +1855,7 @@ def plot_hand(annotationFile=None, startTime=0, duration=None, vidFps=25, ax=Non
 		ax    : matplotlib.axes.Axes or None 
 		Axes object on which plot is to be plotted.
 
-		If None, uses the current Axes object in use with `plt.gca()`. 
+		If None, uses the current Axes object in use with ``plt.gca()``. 
 
 		freqXlabels    : int > 0 
 			Time (in seconds) after which each x ticklabel occurs
@@ -1878,13 +1880,13 @@ def plot_hand(annotationFile=None, startTime=0, duration=None, vidFps=25, ax=Non
 				time in audio + videioOffset = time in video
 
 		lWristCol    : str
-			Name of the column with left wrist data in `annotationFile`.
+			Name of the column with left wrist data in ``annotationFile``.
 
 		rWristCol    : str
-			Name of the column with right wrist data in `annotationFile`.
+			Name of the column with right wrist data in ``annotationFile``.
 
 		wristAxis    : str
-			Level 2 header in the `annotationFile` denoting axis along which movement is plotted (x, y or z axes).
+			Level 2 header in the ``annotationFile`` denoting axis along which movement is plotted (x, y or z axes).
 
 		annotate    : bool
 			If True will mark annotations provided on the plot.
@@ -1894,7 +1896,7 @@ def plot_hand(annotationFile=None, startTime=0, duration=None, vidFps=25, ax=Non
 			
 			If None, will be directly interpreted from the data.
 
-		kwargs	: Additional arguements passed to `drawAnnotation()` if `annotate` is True.
+		kwargs	: Additional arguements passed to ``drawAnnotation()`` if ``annotate`` is True.
 		
 	Returns
 	-------
@@ -1902,7 +1904,7 @@ def plot_hand(annotationFile=None, startTime=0, duration=None, vidFps=25, ax=Non
 			Axes object with plot
 
 	'''
-	startTime = startTime + vidOffset   # convert startTime from time in audio to time in video. See parameter definition of `videoOffset` for more clarity.
+	startTime = startTime + vidOffset   # convert startTime from time in audio to time in video. See parameter definition of ``videoOffset`` for more clarity.
 	duration = duration
 	movements = pd.read_csv(annotationFile, header=[0, 1])
 	lWrist = movements[lWristCol][wristAxis].values[startTime*vidFps:int((startTime+duration)*vidFps)]
@@ -1938,10 +1940,10 @@ def annotateInteraction(axs, keywords, cs, interactionFile, startTime, duration)
 	Parameters
 	----------
 		axs    : list of matplotlib.axes.Axes objects
-			List of axs to add annotation to.
+			List of objects to add annotation to.
 
 		keywords    : list
-			Keyword corresponding to each Axes object. Value appearing in the 'Type' column in `interactionFile`. 
+			Keyword corresponding to each Axes object. Value appearing in the 'Type' column in ``interactionFile``. 
 			
 			.. note ::
 				If len(keywords) = len(axs) + 1, the last keyword is plotted in all Axes objects passed.
@@ -1953,10 +1955,10 @@ def annotateInteraction(axs, keywords, cs, interactionFile, startTime, duration)
 			Path to csv file with the annotation of the interactions.
 
 		startTime    : float >= 0
-			Time to start reading the audio.
+			Time to start reading the audio at.
 
 		duration    : float >= 0 
-			Length of audio to consider
+			Length of audio to consider.
 
 	Returns
 	-------
@@ -1987,7 +1989,7 @@ def annotateInteraction(axs, keywords, cs, interactionFile, startTime, duration)
 	return axs
 
 def drawHandTap(ax, handTaps, c='purple'):
-	'''Plots the hand taps as vertical lines on the Axes object `ax`. 
+	'''Plots the hand taps as vertical lines on the Axes object ``ax``. 
 	
 	Used in fig 9.
 	
@@ -1996,7 +1998,7 @@ def drawHandTap(ax, handTaps, c='purple'):
 		ax    : matplotlib.axes.Axes or None
 			Axes object to add hand taps to
 
-			If None, will plot on `plt.gca()`.
+			If None, will plot on ``plt.gca()``.
 
 		handTaps    : ndarray
 			Array of hand tap timestamps.
@@ -2004,7 +2006,7 @@ def drawHandTap(ax, handTaps, c='purple'):
 		c    : color
 			Color of the line
 
-			Passed to `plt.axes.Axes.axvline()`.
+			Passed to ``plt.axes.Axes.axvline()``.
 
 	Returns
 	-------
@@ -2024,9 +2026,11 @@ def generateVideoWSquares(vid_path, tapInfo, dest_path='Data/Temp/vidWSquares.mp
 	Parameters
 	----------
 		vid_path    : str
+			
 			Path to the original video file.
 
 		tapInfo    : list
+			
 			List of metadata associated with each handtap.
 			
 			Metadata for each handtap consists of: 
@@ -2037,12 +2041,14 @@ def generateVideoWSquares(vid_path, tapInfo, dest_path='Data/Temp/vidWSquares.mp
 				- (pos1, pos2)    : ((float, float), (float, float))
 					(x, y) coordinates of opposite corners of the box to be drawn.
 				- color    : (int, int, int) or color
-					If ``(int, int, int)`` then it is a tuple with RGB values associated with the colour.
+					If (int, int, int) then it is a tuple with RGB values associated with the colour.
 
 		dest_path    : str
+			
 			File path to save video with squares.
 
 		vid_size    : (int, int)
+			
 			(width, height) of video to generate in pixels
 	Returns
 		None
@@ -2118,7 +2124,7 @@ def generateVideo(annotationFile, onsetKeywords, vidPath='Data/Temp/VS_Shree_123
 			File path to the annotation file with hand tap timestamps
 
 		onsetKeywords    : list
-			List of column names to read from `annotationFile`.
+			List of column names to read from ``annotationFile``.
 
 		vidPath    : str
 			File path to original video file.
