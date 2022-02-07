@@ -85,7 +85,7 @@ def readCycleAnnotation(cyclePath, numDiv, startTime, duration, timeCol='Time', 
 
 			If `numDiv` is 0 or number of provided annotations is 1, an empty list is returned 
 
-		.. note::
+		.. note ::
 			If there are no provided annotations present during the relevant duration of audio, the function will return (None, None)
 	'''
 	
@@ -206,7 +206,7 @@ def drawAnnotation(cyclePath=None, onsetPath=None, onsetTimeKeyword=None, onsetL
 		cAnnot	: list (of color values) 	
 			Each value is passed as parameter `c` to `plt.axvline()`.
 
-			One color corresponds to one column name in `onsetTimeKeyword` and in `onsetLabelKeyword`.::
+			One color corresponds to one column name in `onsetTimeKeyword` and in `onsetLabelKeyword`. ::
 
 				len(onsetTimeKeyword) == len(onsetLabelKeyword) == len(c)
 
@@ -338,7 +338,7 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 
 	..[3] Jadoul, Y., Thompson, B., & de Boer, B. (2018). Introducing Parselmouth: A Python interface to Praat. Journal of Phonetics, 71, 1-15. https://doi.org/10.1016/j.wocn.2018.07.001
 
-	..note::
+	..note ::
 		The audio signal is given in mono format to the pitch detection algorithm.
 
 	Uses `plotPitch()` to plot pitch contour if `ax` is not None.
@@ -392,7 +392,7 @@ def pitchContour(audio=None, sr=16000, audioPath=None, startTime=0, duration=Non
 			If None, returns pitch contour in Hz.
 
 		timeStep	: float; default=0.01
-			Time steps (in seconds) in which pitch values are extracted.::
+			Time steps (in seconds) in which pitch values are extracted. ::
 
 				Example: timeStep = 0.01 implies that pitch values are extracted for every 0.01 s.
 
@@ -1278,7 +1278,7 @@ def generateFig(noRows, figSize=(14, 7), heightRatios=None):
 
 			Passed to `matplotlib.figure.Figure.add_gridspec()` as the parameter `height_ratios`.
 			
-			..note::
+			..note ::
 				len(heightRatios) has to be equal to noRows
 
 	Returns
@@ -1711,7 +1711,7 @@ def intensityContour(audio=None, sr=16000, audioPath=None, startTime=0, duration
 			Passed as `minimum_pitch` parameter to `parselmouth.Sound.to_intensity()`.
 
 		timeStep    : float; default=0.01
-			Time steps (in seconds) in which pitch values are extracted.::
+			Time steps (in seconds) in which pitch values are extracted. ::
 
 				Example: timeStep = 0.01 implies that pitch values are extracted for every 0.01 s.
 
@@ -1874,7 +1874,7 @@ def plot_hand(annotationFile=None, startTime=0, duration=None, vidFps=25, ax=Non
 			Title to add to the plot.
 
 		videoOffset    : float
-			Number of seconds offset between video and audio::
+			Number of seconds offset between video and audio ::
 				time in audio + videioOffset = time in video
 
 		lWristCol    : str
@@ -1943,7 +1943,7 @@ def annotateInteraction(axs, keywords, cs, interactionFile, startTime, duration)
 		keywords    : list
 			Keyword corresponding to each Axes object. Value appearing in the 'Type' column in `interactionFile`. 
 			
-			..note::
+			.. note ::
 				If len(keywords) = len(axs) + 1, the last keyword is plotted in all Axes objects passed.
 
 		cs    : list 
