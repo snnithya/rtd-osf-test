@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>utils_fmp module &#8212; rtd-osf-test  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="utils_cnn module" href="utils_cnn.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-utils_fmp">
+<span id="utils-fmp-module"></span><h1>utils_fmp module<a class="headerlink" href="#module-utils_fmp" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.annotationsToFMPFormat">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">annotationsToFMPFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.annotationsToFMPFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts 2 column (Time, Label) format into FMP format ([start time, end time, label])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>annot</strong> – path to annotations file</p></li>
+<li><p><strong>duration</strong> – duration of audio to use in last row of converted annotation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>annotations in FMP format</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>annotFMP</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.check_segment_annotations">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">check_segment_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.check_segment_annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks segment annotation. If label is missing, adds an default label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>annot</strong> – A List of the form of [(start_position, end_position, label), …], or
+[(start_position, end_position), …]</p></li>
+<li><p><strong>default_label</strong> – The default label used if label is missing</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A List of tuples in the form of [(start_position, end_position, label), …]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>annot</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.color_argument_to_dict">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">color_argument_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.color_argument_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a color dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colors</strong> – Several options: 1. string of FMP_COLORMAPS, 2. string of matplotlib colormap, 3. list or np.ndarray of
+matplotlib color specifications, 4. dict that assigns labels  to colors</p></li>
+<li><p><strong>labels_set</strong> – List of all labels</p></li>
+<li><p><strong>default</strong> – Default color, used for labels that are in labels_set, but not in colors</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary that maps labels to colors</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>color_dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.compressed_gray_cmap">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">compressed_gray_cmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.compressed_gray_cmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a logarithmically or exponentially compressed grayscale colormap</p>
+<p>Notebook: B/B_PythonVisualization.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> – The compression factor. If alpha &gt; 0, it performs log compression (enhancing black colors).
+If alpha &lt; 0, it performs exp compression (enhancing white colors).
+Raises an error if alpha = 0.</p></li>
+<li><p><strong>N</strong> – The number of rgb quantization levels (usually 256 in matplotlib)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The colormap</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>color_wb</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.compute_SM_TI">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">compute_SM_TI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempo_rel_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.compute_SM_TI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute enhanced similaity matrix by applying path smoothing and transpositions</p>
+<p>Notebook: C4/C4S2_SSM-TranspositionInvariance.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Input feature sequences</p></li>
+<li><p><strong>Y</strong> – Input feature sequences</p></li>
+<li><p><strong>L</strong> – Length of filter</p></li>
+<li><p><strong>tempo_rel_set</strong> – Set of relative tempo values</p></li>
+<li><p><strong>shift_set</strong> – Set of shift indices</p></li>
+<li><p><strong>direction</strong> – Direction of smoothing (0: forward; 1: backward; 2: both directions)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Transposition-invariant SM
+I_TI: Transposition index matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S_TI</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.compute_SM_dot">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">compute_SM_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.compute_SM_dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes similarty matrix from feature sequences using dot (inner) product
+Notebook: C4/C4S2_SSM.ipynb</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.compute_SSM">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">compute_SSM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempo_rel_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'relative'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binarize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chroma'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.compute_SSM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute an SSM</p>
+<p>Notebook: C4S2_SSM-Thresholding.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Feature sequence</p></li>
+<li><p><strong>L_smooth</strong> – Parameters for computing SSM</p></li>
+<li><p><strong>tempo_rel_set</strong> – Parameters for computing SSM</p></li>
+<li><p><strong>shift_set</strong> – Parameters for computing SSM</p></li>
+<li><p><strong>strategy</strong> – Parameters used for tresholding SSM</p></li>
+<li><p><strong>scale</strong> – Parameters used for tresholding SSM</p></li>
+<li><p><strong>thresh</strong> – Parameters used for tresholding SSM</p></li>
+<li><p><strong>penalty</strong> – Parameters used for tresholding SSM</p></li>
+<li><p><strong>binarize</strong> – Parameters used for tresholding SSM</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SSM and index matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S_thresh, I</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.compute_kernel_checkerboard_Gaussian">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">compute_kernel_checkerboard_Gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.compute_kernel_checkerboard_Gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Guassian-like checkerboard kernel [FMP, Section 4.4.1]
+See also: <a class="reference external" href="https://scipython.com/blog/visualizing-the-bivariate-gaussian-distribution/">https://scipython.com/blog/visualizing-the-bivariate-gaussian-distribution/</a></p>
+<p>Notebook: C4/C4S4_NoveltySegmentation.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L</strong> – Parameter specifying the kernel size M=2*L+1</p></li>
+<li><p><strong>var</strong> – Variance parameter determing the tapering (epsilon)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Kernel matrix of size M x M</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>kernel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.compute_local_average">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">compute_local_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.compute_local_average" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute local average of signal</p>
+<p>Notebook: C6/C6S1_NoveltySpectral.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Signal</p></li>
+<li><p><strong>M</strong> – Determines size (2M+1*Fs) of local average</p></li>
+<li><p><strong>Fs</strong> – Sampling rate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Local average signal</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>local_average</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.compute_novelty_SSM">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">compute_novelty_SSM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.compute_novelty_SSM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute novelty function from SSM [FMP, Section 4.4.1]</p>
+<p>Notebook: C4/C4S4_NoveltySegmentation.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> – SSM</p></li>
+<li><p><strong>kernel</strong> – Checkerboard kernel (if kernel==None, it will be computed)</p></li>
+<li><p><strong>L</strong> – Parameter specifying the kernel size M=2*L+1</p></li>
+<li><p><strong>var</strong> – Variance parameter determing the tapering (epsilon)</p></li>
+<li><p><strong>exclude</strong> – Sets the first L and last L values of novelty function to zero</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Novelty function</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>nov</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.convert_structure_annotation">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">convert_structure_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ann</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.convert_structure_annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert structure annotations</p>
+<p>Notebook: C4/C4S1_MusicStructureGeneral.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ann</strong> – Structure annotions</p></li>
+<li><p><strong>Fs</strong> – Sampling rate</p></li>
+<li><p><strong>remove_digits</strong> – Remove digits from labels</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Converted annotation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ann_converted</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.filter_diag_mult_SM">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">filter_diag_mult_SM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempo_rel_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.filter_diag_mult_SM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path smoothing of similarity matrix by filtering in forward or backward direction
+along various directions around main diagonal
+Note: Directions are simulated by resampling one axis using relative tempo values</p>
+<p>Notebook: C4/C4S2_SSM-PathEnhancement.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> – Self-similarity matrix (SSM)</p></li>
+<li><p><strong>L</strong> – Length of filter</p></li>
+<li><p><strong>tempo_rel_set</strong> – Set of relative tempo values</p></li>
+<li><p><strong>direction</strong> – Direction of smoothing (0: forward; 1: backward)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Smoothed SM</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S_L_final</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.normalize_feature_sequence">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">normalize_feature_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.normalize_feature_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes the columns of a feature sequence</p>
+<p>Notebook: C3/C3S1_FeatureNormalization.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Feature sequence</p></li>
+<li><p><strong>norm</strong> – The norm to be applied. ‘1’, ‘2’, ‘max’ or ‘z’</p></li>
+<li><p><strong>threshold</strong> – An threshold below which the vector <cite>v</cite> used instead of normalization</p></li>
+<li><p><strong>v</strong> – Used instead of normalization below <cite>threshold</cite>. If None, uses unit vector for given norm</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Normalized feature sequence</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>X_norm</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.plot_SSM">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">plot_SSM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs_X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs_S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ann</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_ann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Time</span> <span class="pre">(seconds)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim_X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.plot_SSM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot SSM along with annotations (standard setting is time in seconds)
+Notebook: C4/C4S2_SSM.ipynb</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.plot_matrix">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">plot_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs_F</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">F_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Time</span> <span class="pre">(seconds)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Frequency</span> <span class="pre">(Hz)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.plot_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a matrix, e.g. a spectrogram or a tempogram (function from Notebook: B/B_PythonVisualization.ipynb in [2])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – The matrix</p></li>
+<li><p><strong>Fs</strong> – Sample rate for axis 1</p></li>
+<li><p><strong>Fs_F</strong> – Sample rate for axis 0</p></li>
+<li><p><strong>T_coef</strong> – Time coeffients. If None, will be computed, based on Fs.</p></li>
+<li><p><strong>F_coef</strong> – Frequency coeffients. If None, will be computed, based on Fs_F.</p></li>
+<li><p><strong>xlabel</strong> – Label for x axis</p></li>
+<li><p><strong>ylabel</strong> – Label for y axis</p></li>
+<li><p><strong>title</strong> – Title for plot</p></li>
+<li><p><strong>dpi</strong> – Dots per inch</p></li>
+<li><p><strong>colorbar</strong> – Create a colorbar.</p></li>
+<li><p><strong>colorbar_aspect</strong> – Aspect used for colorbar, in case only a single axes is used.</p></li>
+<li><p><strong>ax</strong> – Either (1.) a list of two axes (first used for matrix, second for colorbar), or (2.) a list with a single
+axes (used for matrix), or (3.) None (an axes will be created).</p></li>
+<li><p><strong>figsize</strong> – Width, height in inches</p></li>
+<li><p><strong>**kwargs</strong> – Keyword arguments for matplotlib.pyplot.imshow</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The created matplotlib figure or None if ax was given.
+ax: The used axes.
+im: The image plot</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>fig</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.plot_segments">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">plot_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'horizontal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FMP_1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nontime_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nontime_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nontime_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swap_time_ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_off</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_nontime_axislim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.plot_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a multi-line plot for annotation data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>annot</strong> – A List of tuples in the form of [(start_position, end_position, label), …]</p></li>
+<li><p><strong>ax</strong> – The Axes instance to plot on. If None, will create a figure and axes.</p></li>
+<li><p><strong>figsize</strong> – Width, height in inches</p></li>
+<li><p><strong>direction</strong> – ‘vertical’ or ‘horizontal’</p></li>
+<li><p><strong>colors</strong> – Several options: 1. string of FMP_COLORMAPS, 2. string of matplotlib colormap, 3. list or np.ndarray of
+matplotlib color specifications, 4. dict that assigns labels  to colors</p></li>
+<li><p><strong>time_min</strong> – Minimal limit for time axis. If None, will be min annotation.</p></li>
+<li><p><strong>time_max</strong> – Maximal limit for time axis. If None, will be max from annotation.</p></li>
+<li><p><strong>nontime_min</strong> – Minimal limit for non-time axis.</p></li>
+<li><p><strong>nontime_max</strong> – Maximal limit for non-time axis.</p></li>
+<li><p><strong>time_axis</strong> – Display time axis ticks or not</p></li>
+<li><p><strong>nontime_axis</strong> – Display non-time axis ticks or not</p></li>
+<li><p><strong>swap_time_ticks</strong> – For horizontal: xticks up; for vertical: yticks left</p></li>
+<li><p><strong>edgecolor</strong> – Color for edgelines of segment box</p></li>
+<li><p><strong>axis_off</strong> – Calls ax.axis(‘off’)</p></li>
+<li><p><strong>dpi</strong> – Dots per inch</p></li>
+<li><p><strong>adjust_nontime_axislim</strong> – Adjust non-time-axis. Usually True for plotting on standalone axes and False for
+overlay plotting</p></li>
+<li><p><strong>alpha</strong> – Alpha value for rectangle</p></li>
+<li><p><strong>print_labels</strong> – Print labels inside Rectangles</p></li>
+<li><p><strong>label_ticks</strong> – Print labels as ticks</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments for matplotlib.pyplot.annotate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The created matplotlib figure or None if ax was given.
+ax: The used axes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>fig</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.shift_cyc_matrix">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">shift_cyc_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.shift_cyc_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cyclic shift of features matrix along first dimension</p>
+<p>Notebook: C4/C4S2_SSM-TranspositionInvariance.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Feature respresentation</p></li>
+<li><p><strong>shift</strong> – Number of bins to be shifted</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cyclically shifted feature matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>X_cyc</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.smooth_downsample_feature_sequence">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">smooth_downsample_feature_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtLen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">41</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">downSampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'boxcar'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.smooth_downsample_feature_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smoothes and downsamples a feature sequence. Smoothing is achieved by convolution with a filter kernel</p>
+<p>Notebook: C3/C3S1_FeatureSmoothing.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Feature sequence</p></li>
+<li><p><strong>Fs</strong> – Frame rate of <cite>X</cite></p></li>
+<li><p><strong>filtLen</strong> – Length of smoothing filter</p></li>
+<li><p><strong>downSampling</strong> – Downsampling factor</p></li>
+<li><p><strong>window</strong> – Window type of smoothing filter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Smoothed and downsampled feature sequence
+Fs_feature: Frame rate of <cite>X_smooth</cite></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>X_smooth</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.spectral_flux">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">spectral_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">640</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.spectral_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute spectral-based novelty function</p>
+<p>Notebook: C6/C6S1_NoveltySpectral.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Signal</p></li>
+<li><p><strong>Fs</strong> – Sampling rate</p></li>
+<li><p><strong>N</strong> – Window size</p></li>
+<li><p><strong>H</strong> – Hope size</p></li>
+<li><p><strong>gamma</strong> – Parameter for logarithmic compression</p></li>
+<li><p><strong>M</strong> – Size (frames) of local average</p></li>
+<li><p><strong>norm</strong> – Apply max norm (if norm==1)</p></li>
+<li><p><strong>band</strong> – List of lower and upper spectral freq limits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Energy-based novelty function
+Fs_feature: Feature rate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>novelty_spectrum</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_fmp.threshold_matrix">
+<span class="sig-prename descclassname"><span class="pre">utils_fmp.</span></span><span class="sig-name descname"><span class="pre">threshold_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'absolute'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binarize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils_fmp.threshold_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Treshold matrix in a relative fashion</p>
+<p>Notebook: C4/C4/C4S2_SSM-Thresholding.ipynb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> – Input matrix</p></li>
+<li><p><strong>thresh</strong> – Treshold (meaning depends on strategy)</p></li>
+<li><p><strong>strategy</strong> – Thresholding strategy (‘absolute’, ‘relative’, ‘local’)</p></li>
+<li><p><strong>scale</strong> – If scale=True, then scaling of positive values to range [0,1]</p></li>
+<li><p><strong>penalty</strong> – Set values below treshold to value specified</p></li>
+<li><p><strong>binarize</strong> – Binarizes final matrix (positive: 1; otherwise: 0)</p></li>
+<li><p><strong>Note</strong> – Binarization is applied last (overriding other settings)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Thresholded matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S_thresh</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">rtd-osf-test</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">rtd-osf-test</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils_cnn.html">utils_cnn module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils_fmp module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">rtd-osf-test</a><ul>
+      <li>Previous: <a href="utils_cnn.html" title="previous chapter">utils_cnn module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, rohit, nithya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/utils_fmp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

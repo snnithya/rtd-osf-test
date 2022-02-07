@@ -1,0 +1,1300 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>utils module &#8212; rtd-osf-test  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils_cnn module" href="utils_cnn.html" />
+    <link rel="prev" title="rtd-osf-test" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-utils">
+<span id="utils-module"></span><h1>utils module<a class="headerlink" href="#module-utils" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.annotateInteraction">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">annotateInteraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactionFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.annotateInteraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds interaction annotation to the axes given.</p>
+<p>Used in fig 3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axs</strong> (<em>list of matplotlib.axes.Axes objects</em>) – List of axs to add annotation to.</p></li>
+<li><p><strong>keywords</strong> (<em>list</em>) – <p>Keyword corresponding to each Axes object. Value appearing in the ‘Type’ column in <cite>interactionFile</cite>.</p>
+<dl class="simple">
+<dt>..note::</dt><dd><p>If len(keywords) = len(axs) + 1, the last keyword is plotted in all Axes objects passed.</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>cs</strong> (<em>list</em>) – List of colours associated with each keyword.</p></li>
+<li><p><strong>interactionFile</strong> (<em>str</em>) – Path to csv file with the annotation of the interactions.</p></li>
+<li><p><strong>startTime</strong> (<em>float &gt;= 0</em>) – Time to start reading the audio.</p></li>
+<li><p><strong>duration</strong> (<em>float &gt;= 0</em>) – Length of audio to consider</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>axs</strong> – List of axes with annotation of interaction</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.axes.Axes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.autoCorrelationFunction">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">autoCorrelationFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxLag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winSize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopSize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.autoCorrelationFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute short-time autocorrelation of a signal and normalise every frame by the maximum correlation value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – Input signal</p></li>
+<li><p><strong>fs</strong> (<em>int</em><em> or </em><em>float</em>) – Sampling rate</p></li>
+<li><p><strong>maxLag</strong> (<em>int</em><em> or </em><em>float</em>) – Maximum lag in seconds upto which correlation is to be found (ACF is computed for all unit sample shift values lesser than this limit)</p></li>
+<li><p><strong>winSize</strong> (<em>int</em><em> or </em><em>float</em>) – Length in seconds of the signal selected for short-time autocorrelation</p></li>
+<li><p><strong>hopSize</strong> (<em>int</em><em> or </em><em>float</em>) – Hop duration in seconds between successive windowed signal segments (not the same as lag/shift)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ACF</strong> – short-time ACF matrix [shape=(#frames,#lags)]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.biphasicDerivative">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">biphasicDerivative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopDur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rectify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.biphasicDerivative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the biphasic derivative of a signal(See [1] for a detailed explanation of the algorithm).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – Input signal</p></li>
+<li><p><strong>hopDur</strong> (<em>float</em>) – Sampling interval in seconds of input signal (reciprocal of sampling rate of x)</p></li>
+<li><p><strong>norm</strong> (<em>bool</em>) – If output is to be normalized</p></li>
+<li><p><strong>rectify</strong> (<em>bool</em>) – If output is to be rectified to keep only positive values (sufficient for peak-picking)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>x</strong> – Output of convolving input with the biphasic derivative filter</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.combineAudioVideo">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">combineAudioVideo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vid_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Data/Temp/vidWSquares.mp4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'audioWClicks.wav'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Data/Temp/FinalVid.mp4'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.combineAudioVideo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to combine audio and video into a single file.</p>
+<p>Used in fig 9.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vid_path</strong> (<em>str</em>) – File path to the video file with squares.</p></li>
+<li><p><strong>audio_path</strong> (<em>str</em>) – File path to the audio file with clicks.</p></li>
+<li><p><strong>dest_path</strong> (<em>str</em>) – File path to store the combined file at.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.drawAnnotation">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">drawAnnotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cyclePath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onsetPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onsetTimeKeyword</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onsetLabelKeyword</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numDiv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cAnnot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['purple']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">providedAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">computedAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yAnnot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sizeAnnot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textColour</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['white']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.drawAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws annotations on ax</p>
+<p>Plots annotation labels on <cite>ax</cite> if provided, else creates a new matplotlib.axes.Axes object and adds the labels to that.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cyclePath</strong> (<em>str</em><em>, </em><em>path object</em><em> or </em><em>file-like object</em>) – <p>String path, os.PathLike object or file-like object (containing a read() method) pointing to the tala-related annotation csv.</p>
+<p>This value is passed to <cite>readCycleAnnotation()</cite></p>
+</p></li>
+<li><p><strong>onsetPath</strong> (<em>str</em><em>, </em><em>path object</em><em> or </em><em>file-like object</em>) – <p>String path, os.PathLike object or file-like object (containing a read() method) pointing to the non-tala related annotation csv (example: syllable or performance related annotations).</p>
+<p>This value is passed to <cite>readOnsetAnnotation()</cite>.</p>
+<p>These annotations are only considered if cyclePath is None.</p>
+</p></li>
+<li><p><strong>onsetTimeKeyword</strong> (<em>list</em>) – <p>List of column names in the onset file to take onset timestamps from.</p>
+<p>Length of the list should be equal to the length of <cite>onsetLabelKeyword</cite> and <cite>c</cite>.</p>
+</p></li>
+<li><p><strong>onsetLabelKeyword</strong> (<em>list</em><em> or </em><em>None</em>) – <p>List of column names in the onset file to take annotation labels from.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">list</span></code> is provided, labels will be drawn for each column name in the list. The length of the list should be equal to length of <cite>onsetTimeKeyword</cite> and <cite>c</cite>.</p>
+<p>If None, no labels will be plotted corresponding to the onsets (indicated by vertical lines).</p>
+<p>If <cite>annotLabel</cite> is False, then <cite>onsetLabelKeyword</cite> can be None.</p>
+</p></li>
+<li><p><strong>numDiv</strong> (<em>int &gt;= 0</em><em>, </em><em>default=0</em>) – <p>Number of equally spaced time stamps to add between consecutive pairs of annotations.</p>
+<p>Used only if <cite>cyclePath</cite> is not None.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float &gt;= 0</em><em>, </em><em>default=0</em>) – Starting timestamp from which to analyse the audio.</p></li>
+<li><p><strong>duration</strong> (<em>float &gt;= 0</em><em> or </em><em>None</em>) – <p>Duration of audio to be analysed.</p>
+<p>If None, it will analyse the entire audio length.</p>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>matplotlib.axes.Axes object to plot in.</p>
+<p>If None, will use <cite>plt.gca()</cite> to use the current matplotlib.axes.Axes object.</p>
+</p></li>
+<li><p><strong>annotLabel</strong> (<em>bool</em><em>, </em><em>default=True</em>) – <p>If True, will print annotation label along with a vertical line at the annotation time stamp</p>
+<p>If False, will just add a vertical line at the annotation time stamp without the label.</p>
+</p></li>
+<li><p><strong>cAnnot</strong> (<em>list</em><em> (</em><em>of color values</em><em>)</em>) – <p>Each value is passed as parameter <cite>c</cite> to <cite>plt.axvline()</cite>.</p>
+<p>One color corresponds to one column name in <cite>onsetTimeKeyword</cite> and in <cite>onsetLabelKeyword</cite>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">onsetTimeKeyword</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">onsetLabelKeyword</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>providedAlpha</strong> (<em>scalar</em><em> or </em><em>None</em>) – <p>Controls opacity of the provided annotation lines drawn. Value must be within the range 0-1, inclusive.</p>
+<p>Passed to <cite>plt.axvline()</cite> as the <cite>alpha</cite> parameter.</p>
+</p></li>
+<li><p><strong>computedAlpha</strong> (<em>scalar</em><em> or </em><em>None</em>) – <p>Controls opacity of the computed annotation lines drawn. Value must be within the range 0-1, inclusive.</p>
+<p>Passed to <cite>plt.axvline()</cite> as the <cite>alpha</cite> parameter.</p>
+</p></li>
+<li><p><strong>yAnnot</strong> (<em>float</em>) – <p>Float value from 0-1, inclusive.</p>
+<p>Indicates where the label should occur on the y-axis. 0 indicates the lower ylim, 1 indicates the higher ylim.</p>
+</p></li>
+<li><p><strong>sizeAnnot</strong> (<em>int</em>) – Font size for annotated text. Passed as <cite>fontsize</cite> parameter to <cite>matplotlib.axes.Axes.annotate()</cite>.</p></li>
+<li><p><strong>textColour</strong> (<em>list</em>) – List of strings for each <cite>onsetLabelKeyword</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – axis that has been plotted in</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.Axes.axis</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – <ul class="simple">
+<li><p>If the hyperparameters <cite>onsetTimeKeyword</cite>, <cite>onsetLabelKeyword</cite>, <cite>c</cite> and <cite>textColour</cite> are lists and do not have the same length.
+    
+    - If both <cite>cyclePath</cite> and <cite>onsetPath</cite> are None.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.drawHandTap">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">drawHandTap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handTaps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'purple'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.drawHandTap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the hand taps as vertical lines on the Axes object <cite>ax</cite>.</p>
+<p>Used in fig 9.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>Axes object to add hand taps to</p>
+<p>If None, will plot on <cite>plt.gca()</cite>.</p>
+</p></li>
+<li><p><strong>handTaps</strong> (<em>ndarray</em>) – Array of hand tap timestamps.</p></li>
+<li><p><strong>c</strong> (<em>color</em>) – <p>Color of the line</p>
+<p>Passed to <cite>plt.axes.Axes.axvline()</cite>.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Plot with lines</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.axes.Axes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.drawWave">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">drawWave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Waveform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqXlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winSize_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">640</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopSize_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">160</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nFFT_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vocal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cOdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.drawWave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the wave plot of the audio</p>
+<p>Plots the waveform of the given audio using <cite>librosa.display.waveshow()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em><em> or </em><em>None</em>) – Loaded audio time series</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – <p>If audio is not None, defines sample rate of audio time series</p>
+<p>If audio is None and audioPath is not None, defines sample rate to load the audio at</p>
+</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em><em>, </em><em>int</em><em>, </em><em>pathlib.Path</em><em>, </em><em>file-like object</em><em> or </em><em>None</em>) – <p>Path to the input file.</p>
+<p>Used only if audio is None. Audio is loaded as mono.</p>
+<p>Sent to <cite>librosa.load()</cite> as <cite>path</cite> parameter.</p>
+<p>If None, <cite>audio</cite> cannot be None.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float; default=0</em>) – Time stamp to consider audio from.</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em> or </em><em>None; default=None</em>) – <p>Duration of the audio to consider.</p>
+<dl class="simple">
+<dt>If duration is None</dt><dd><ul>
+<li><p>If <cite>audio</cite> is None, duration is inferred from the audio.</p></li>
+<li><p>If <cite>audio</cite> is None and <cite>audioPath</cite> is not None, the entire song is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>Axes to plot waveplot in.</p>
+<p>If None, will plot the object in <cite>plt.gca()</cite></p>
+</p></li>
+<li><p><strong>xticks</strong> (<em>bool</em>) – If True, will add xticklabels to plot.</p></li>
+<li><p><strong>yticks</strong> (<em>bool</em>) – If True, will add yticklabels to plot.</p></li>
+<li><p><strong>xlabel</strong> (<em>bool</em>) – If True, will print xlabel in the plot.</p></li>
+<li><p><strong>ylabel</strong> (<em>bool</em>) – If True will print ylabel in the plot.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title to add to the plot.</p></li>
+<li><p><strong>freqXlabels</strong> (<em>float &gt; 0</em>) – Time (in seconds) after which each x ticklabel occurs in the plot.</p></li>
+<li><p><strong>annotate</strong> (<em>boolean</em>) – If True, will annotate markings in either cyclePath or onsetPath with preference to cyclePath.</p></li>
+<li><p><strong>odf</strong> (<em>bool</em>) – <p>If True, will plot the onset detection function over the wave form.</p>
+<p>Uses <cite>getODF()</cite> to compute ODF.</p>
+</p></li>
+<li><p><strong>winSize_odf</strong> (<em>int</em>) – <p>Window size (in frames) used by the onset detection function.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getODF()</cite> function.</p>
+</p></li>
+<li><p><strong>hopSize_odf</strong> (<em>int</em>) – <p>Hop size (in frames) used by the onset detection function.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getODF()</cite> function.</p>
+</p></li>
+<li><p><strong>nFFT_odf</strong> (<em>int</em>) – <p>Size of DFT used in onset detection function.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getODF()</cite> function.</p>
+</p></li>
+<li><p><strong>source_odf</strong> (<em>str</em>) – <p>Defines type of instrument in the audio. Accepted values are:
+- ‘vocal’
+- ‘pakhawaj’</p>
+<p>Used in the <cite>getODF()</cite> only if <cite>odf</cite> is True.</p>
+</p></li>
+<li><p><strong>cOdf</strong> (<em>color</em>) – <p>Colour to plot onset detection function in.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getODF()</cite> function.</p>
+</p></li>
+<li><p><strong>ylim</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>None</em>) – <p>(min, max) limits for the y axis.</p>
+<p>If None, will be directly interpreted from the data.</p>
+</p></li>
+<li><p><strong>kwargs</strong> (Additional arguements passed to <cite>drawAnnotation()</cite> if <cite>annotate</cite> is True.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – Waveform plot of given audio.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.axes.Axes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.fadeIn">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">fadeIn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.fadeIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply fade-in to the beginning of an audio signal using a hanning window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – Signal</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – Length of fade (in samples)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>x</strong> – Faded-in signal</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.fadeOut">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">fadeOut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.fadeOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply fade-out to the end of an audio signal using a hanning window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – Signal</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – Length of fade (in samples)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>x</strong> – Faded-out signal</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.generateFig">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">generateFig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noRows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(14,</span> <span class="pre">7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heightRatios</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.generateFig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a matplotlib.pyplot.figure and axes to plot in.</p>
+<p>Axes in the plot are stacked vertically in one column, with height of each axis determined by heightRatios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noRows</strong> (<em>int &gt; 0</em>) – Number of plots (i.e. rows) in the figure.</p></li>
+<li><p><strong>figSize</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em>) – <p>(width, height) in inches of the figure.</p>
+<p>Passed to <cite>matplotlib.figure.Figure()</cite>.</p>
+</p></li>
+<li><p><strong>heightRatios</strong> (<em>list</em><em> or </em><em>None</em>) – <p>List of heights that each plot in the figure should take. Relative height of each row is determined by <code class="docutils literal notranslate"><span class="pre">heightRatios[i]</span> <span class="pre">/</span> <span class="pre">sum(heightRatios)</span></code>.</p>
+<p>Passed to <cite>matplotlib.figure.Figure.add_gridspec()</cite> as the parameter <cite>height_ratios</cite>.</p>
+<dl class="simple">
+<dt>..note::</dt><dd><p>len(heightRatios) has to be equal to noRows</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>fig</strong> (<em>matplotlib.figure.Figure()</em>) – Figure object with all the plots</p></li>
+<li><p><strong>axs</strong> (<em>list of matplotlib.axes.Axes objects</em>) – List of axes objects. Each object corresponds to one row/plot.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>Exception</strong> – If <code class="docutils literal notranslate"><span class="pre">len(heightRatios)</span> <span class="pre">!=</span> <span class="pre">noRows</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.generateVideo">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">generateVideo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotationFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onsetKeywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vidPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Data/Temp/VS_Shree_1235_1321.mp4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Data/Temp/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.generateVideo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to generate video with squares and clicks corresponding to hand taps.</p>
+<p>Used in fig 9.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>annotationFile</strong> (<em>str</em>) – File path to the annotation file with hand tap timestamps</p></li>
+<li><p><strong>onsetKeywords</strong> (<em>list</em>) – List of column names to read from <cite>annotationFile</cite>.</p></li>
+<li><p><strong>vidPath</strong> (<em>str</em>) – File path to original video file.</p></li>
+<li><p><strong>tempFolder</strong> (<em>str</em>) – File path to temporary directory to store intermediate audio and video files in.</p></li>
+<li><p><strong>pos</strong> (<em>list</em>) – list of [pos1, pos2] -&gt; 2 opposite corners of the box for each keyword</p></li>
+<li><p><strong>cs</strong> (<em>list</em>) – list of [R, G, B] colours used for each keyword</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.generateVideoWSquares">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">generateVideoWSquares</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vid_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tapInfo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Data/Temp/vidWSquares.mp4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vid_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(720,</span> <span class="pre">576)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.generateVideoWSquares" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to genrate a video with rectangles for each hand tap.</p>
+<p>Used in fig 9.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vid_path</strong> (<em>str</em>) – Path to the original video file.</p></li>
+<li><p><strong>tapInfo</strong> (<em>list</em>) – <p>List of metadata associated with each handtap.</p>
+<dl class="simple">
+<dt>Metadata for each handtap consists of:</dt><dd><ul>
+<li><dl class="simple">
+<dt>time<span class="classifier">float</span></dt><dd><p>time stamp of hand tap (in seconds).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>keyword<span class="classifier">str</span></dt><dd><p>keyword specifying which hand tap to consider</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>(pos1, pos2)<span class="classifier">((float, float), (float, float))</span></dt><dd><p>(x, y) coordinates of opposite corners of the box to be drawn.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>color<span class="classifier">(int, int, int) or color</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">int,</span> <span class="pre">int)</span></code> then it is a tuple with RGB values associated with the colour.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>dest_path</strong> (<em>str</em>) – File path to save video with squares.</p></li>
+<li><p><strong>vid_size</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) – (width, height) of video to generate in pixels</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.getODF">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">getODF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">640</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">160</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nFFT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vocal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.getODF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes onset activation function from audio signal using short-time spectrum based methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em>) – Audio signal</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em>) – Path to the audio file</p></li>
+<li><p><strong>startTime</strong> (<em>int</em><em> or </em><em>float</em>) – Time to start reading the audio at</p></li>
+<li><p><strong>duration</strong> (<em>int</em><em> or </em><em>float</em>) – Duration of audio to read</p></li>
+<li><p><strong>fs</strong> (<em>int</em><em> or </em><em>float</em>) – Sampling rate to read audio at</p></li>
+<li><p><strong>winSize</strong> (<em>int</em>) – Window size (in frames) for STFT</p></li>
+<li><p><strong>hopSize</strong> (<em>int</em>) – Hop size (in frames) for STFT</p></li>
+<li><p><strong>nFFT</strong> (<em>int</em>) – DFT size</p></li>
+<li><p><strong>source</strong> (<em>str</em>) – Source instrument in audio - one of ‘vocal’ or ‘perc’ (percussion)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>odf</strong> (<em>ndarray</em>) – Frame-wise onset activation function (at a sampling rate of 1/hopSize)</p></li>
+<li><p><em>onsets  ndarray</em> – Time locations of detected onset peaks in the odf (peaks detected using peak picker from librosa)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.intensityContour">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">intensityContour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minPitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">98</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeStep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.intensityContour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the intensity contour for an audio clip.</p>
+<p>Intensity contour is generated for a given audio with <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and it’s Python API <a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Boersma, P., &amp; Weenink, D. (2021). Praat: doing phonetics by computer [Computer program]. Version 6.1.38, retrieved 2 January 2021 from <a class="reference external" href="http://www.praat.org/">http://www.praat.org/</a></p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>Jadoul, Y., Thompson, B., &amp; de Boer, B. (2018). Introducing Parselmouth: A Python interface to Praat. Journal of Phonetics, 71, 1-15. <a class="reference external" href="https://doi.org/10.1016/j.wocn.2018.07.001">https://doi.org/10.1016/j.wocn.2018.07.001</a></p>
+</dd>
+</dl>
+<p>Uses <cite>plotIntensity()</cite> to plot the contour is <cite>ax</cite> is not None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em><em> or </em><em>None</em>) – Loaded audio time series</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – <p>If audio is not None, defines sample rate of audio time series</p>
+<p>If audio is None and audioPath is not None, defines sample rate to load the audio at</p>
+</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em><em>, </em><em>int</em><em>, </em><em>pathlib.Path</em><em>, </em><em>file-like object</em><em> or </em><em>None</em>) – </p></li>
+<li><p><strong>file.</strong> (<em>Path to the input</em>) – <p>Used only if audio is None. Audio is loaded as mono.</p>
+<p>Sent to <cite>librosa.load()</cite> as <cite>path</cite> parameter.</p>
+<p>If None, <cite>audio</cite> cannot be None.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float; default=0</em>) – Time stamp to consider audio from</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em> or </em><em>None; default=None</em>) – <dl class="simple">
+<dt>If duration is None</dt><dd><ul>
+<li><p>If <cite>audio</cite> is None, duration is inferred from the audio.</p></li>
+<li><p>If <cite>audio</cite> is None and <cite>audioPath</cite> is not None, the entire song is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>minPitch</strong> (<em>float; default=98</em>) – <p>Minimum pitch (in Hz) to read for contour extraction.</p>
+<p>Passed as <cite>minimum_pitch</cite> parameter to <cite>parselmouth.Sound.to_intensity()</cite>.</p>
+</p></li>
+<li><p><strong>timeStep</strong> (<em>float; default=0.01</em>) – <p>Time steps (in seconds) in which pitch values are extracted.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="p">:</span> <span class="n">timeStep</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="n">implies</span> <span class="n">that</span> <span class="n">pitch</span> <span class="n">values</span> <span class="n">are</span> <span class="n">extracted</span> <span class="k">for</span> <span class="n">every</span> <span class="mf">0.01</span> <span class="n">s</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Passed as <cite>time_step</cite> parameter to <cite>parselmouth.Sound.to_intensity()</cite>.</p>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>Axes object to plot the intensity contour in.</p>
+<p>If None, will return a tuple with (intensity contour, time steps)</p>
+</p></li>
+<li><p><strong>kwargs</strong> (Additional arguements passed to <cite>plotIntensity()</cite>.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – Plot of intensity contour if <cite>ax</cite> was not None</p></li>
+<li><p><strong>(intensityVals, t)</strong> (<em>(ndarray, ndarray)</em>) – Tuple with arrays of intensity values (in dB) and time stamps. Returned if ax was None.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.pitchContour">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">pitchContour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minPitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">98</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxPitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">660</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tonic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeStep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">octaveJumpCost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">veryAccurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.pitchContour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pitch contour (in cents) for the audio</p>
+<p>Calculates the pitch contour of a given audio sample using autocorrelation method described in _[1]. The implementation of the algorithm is done using <a class="footnote-reference brackets" href="#id4" id="id5">2</a> and it’s Python API _[3]. The pitch contour is converted to cents by making the tonic correspond to 0 cents.</p>
+<p>..[1] Paul Boersma (1993): “Accurate short-term analysis of the fundamental frequency and the harmonics-to-noise ratio of a sampled sound.” Proceedings of the Institute of Phonetic Sciences 17: 97–110. University of Amsterdam.Available on <a class="reference external" href="http://www.fon.hum.uva.nl/paul/">http://www.fon.hum.uva.nl/paul/</a></p>
+<p>..[2] Boersma, P., &amp; Weenink, D. (2021). Praat: doing phonetics by computer [Computer program]. Version 6.1.38, retrieved 2 January 2021 from <a class="reference external" href="http://www.praat.org/">http://www.praat.org/</a></p>
+<p>..[3] Jadoul, Y., Thompson, B., &amp; de Boer, B. (2018). Introducing Parselmouth: A Python interface to Praat. Journal of Phonetics, 71, 1-15. <a class="reference external" href="https://doi.org/10.1016/j.wocn.2018.07.001">https://doi.org/10.1016/j.wocn.2018.07.001</a></p>
+<dl class="simple">
+<dt>..note::</dt><dd><p>The audio signal is given in mono format to the pitch detection algorithm.</p>
+</dd>
+</dl>
+<p>Uses <cite>plotPitch()</cite> to plot pitch contour if <cite>ax</cite> is not None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em><em> or </em><em>None</em>) – <p>Loaded audio time series</p>
+<p>Audio signal is converted to mono to compute the pitch.</p>
+<p>If None, <cite>audioPath</cite> can not be None</p>
+</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – <p>If audio is not None, defines sample rate of audio time series.</p>
+<p>If audio is None and audioPath is not None, defines sample rate to load the audio at.</p>
+</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em><em>, </em><em>int</em><em>, </em><em>pathlib.Path</em><em>, </em><em>file-like object</em><em> or </em><em>None</em>) – <p>Path to the input file.</p>
+<p>Used only if audio is None. Audio is loaded as mono.</p>
+<p>Sent to <cite>librosa.load()</cite> as <cite>path</cite>.</p>
+<p>If None, <cite>audio</cite> cannot be None.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float; default=0</em>) – Time stamp to consider audio from.</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em> or </em><em>None; default=None</em>) – <p>Duration of the audio to consider.</p>
+<dl class="simple">
+<dt>If duration is None</dt><dd><ul>
+<li><p>If <cite>audio</cite> is None, duration is inferred from the audio.</p></li>
+<li><p>If <cite>audio</cite> is None and <cite>audioPath</cite> is not None, the entire song is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>minPitch</strong> (<em>float; default=98</em>) – <p>Minimum pitch (in Hz) to read for contour extraction.</p>
+<p>Passed as <cite>pitch_floor</cite> parameter to <cite>parselmouth.Sound.to_pitch_ac()</cite>.</p>
+</p></li>
+<li><p><strong>maxPitch</strong> (<em>float; default=660</em>) – <p>Maximum pitch to read for contour extraction.</p>
+<p>Passed as <cite>pitch_ceil</cite> parameter to <cite>parselmouth.Sound.to_pitch_ac()</cite>.</p>
+</p></li>
+<li><p><strong>tonic</strong> (<em>float</em><em> or </em><em>None</em>) – <p>Tonic of the audio (in Hz). Used to compute the pitch contour in cents. If float is given, returns pitch contour values in cents.</p>
+<p>If None, returns pitch contour in Hz.</p>
+</p></li>
+<li><p><strong>timeStep</strong> (<em>float; default=0.01</em>) – <p>Time steps (in seconds) in which pitch values are extracted.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="p">:</span> <span class="n">timeStep</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="n">implies</span> <span class="n">that</span> <span class="n">pitch</span> <span class="n">values</span> <span class="n">are</span> <span class="n">extracted</span> <span class="k">for</span> <span class="n">every</span> <span class="mf">0.01</span> <span class="n">s</span><span class="o">.</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>octaveJumpCost</strong> (<em>float</em>) – <p>Degree of disfavouring of pitch changes, relative to maximum possible autocorrelation.</p>
+<p>Passed as <cite>octave_jump_cost</cite> parameter to <cite>praat.Sound.to_pitch_ac()</cite>.</p>
+</p></li>
+<li><p><strong>veryAccurate</strong> (<em>bool</em>) – <p>Determines the type and length of the window used in the pitch extraction algorithm.</p>
+<p>Passed as <cite>very_accurate</cite> parameter to <cite>praat.Sound.to_pitch_ac()</cite>.</p>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – Axes to plot the pitch contour in.</p></li>
+<li><p><strong>kwargs</strong> (Additional arguements to <cite>plotPitch()</cite>.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – Plot of pitch contour if <cite>ax</cite> was not None</p></li>
+<li><p><strong>(p, t)</strong> (<em>(ndarray, ndarray)</em>) – Tuple with arrays of pitch values (in cents) and time stamps. Returned if ax was None.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.playAudio">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">playAudio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.playAudio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays relevant part of audio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em><em> or </em><em>None</em>) – Loaded audio time series.</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – <p>If audio is not None, defines sample rate of audio time series .</p>
+<p>If audio is None and audioPath is not None, defines sample rate to load the audio at.</p>
+</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em><em>, </em><em>int</em><em>, </em><em>pathlib.Path</em><em>, </em><em>file-like object</em><em> or </em><em>None</em>) – <p>Path to the input file.</p>
+<p>Used only if audio is None. Audio is loaded as mono.</p>
+<p>Sent to <cite>librosa.load()</cite> as <cite>path</cite> parameter.</p>
+<p>If None, <cite>audio</cite> cannot be None.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float; default=0</em>) – Time stamp to consider audio from.</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em> or </em><em>None; default=None</em>) – <dl class="simple">
+<dt>If duration is None</dt><dd><ul>
+<li><p>If <cite>audio</cite> is None, duration is inferred from the audio.</p></li>
+<li><p>If <cite>audio</cite> is None and <cite>audioPath</cite> is not None, the entire song is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Object that plays the audio.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iPython.display.Audio</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.playAudioWClicks">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">playAudioWClicks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onsetFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onsetLabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['Inst',</span> <span class="pre">'Tabla']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.playAudioWClicks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays relevant part of audio along with clicks at timestamps of each of the onsetLabels provided.</p>
+<p>If <cite>destPath</cite> is not None, generated audio is saved at <cite>destPath</cite>, else the generated audio is returned as a <cite>iPython.display.Audio</cite> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em><em> or </em><em>None</em>) – Loaded audio time series.</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – <p>If audio is not None, defines sample rate of audio time series .</p>
+<p>If audio is None and audioPath is not None, defines sample rate to load the audio at.</p>
+</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em><em>, </em><em>int</em><em>, </em><em>pathlib.Path</em><em>, </em><em>file-like object</em><em> or </em><em>None</em>) – <p>Path to the input file.</p>
+<p>Used only if audio is None. Audio is loaded as mono.</p>
+<p>Sent to <cite>librosa.load()</cite> as <cite>path</cite> parameter.</p>
+<p>If None, <cite>audio</cite> cannot be None.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float</em>) – Time stamp to consider audio from.</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em> or </em><em>None; default=None</em>) – <dl class="simple">
+<dt>If duration is None</dt><dd><ul>
+<li><p>If <cite>audio</cite> is None, duration is inferred from the audio.</p></li>
+<li><p>If <cite>audio</cite> is None and <cite>audioPath</cite> is not None, the entire song is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>onsetFile</strong> (<em>str</em>) – File path to csv onset time stamps.</p></li>
+<li><p><strong>onsetLabels</strong> (<em>str</em><em> or </em><em>list</em>) – <p>Column name(s) in onsetFile with time stamp for different types of onsets.</p>
+<p>If a list is given, then clicks will be generated with different frequencies for each column name in the list.</p>
+</p></li>
+<li><p><strong>destPath</strong> (<em>str</em><em> or </em><em>None</em>) – <p>Path to save audio file at.</p>
+<p>If None, will not save any audio file.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Object that plays the audio with clicks.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iPython.display.Audio</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.playVideo">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">playVideo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">videoPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Data/Temp/VideoPart.mp4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">videoOffset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.playVideo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays relevant part of a given video.</p>
+<p>If <cite>duration</cite> is None and <cite>startTime</cite> is 0, the entire Video is returned.</p>
+<p>If <cite>duration</cite> is not None or <cite>startTime</cite> is not 0, the video is cut using the <cite>ffmpeg</cite> Python library and is stored in <cite>destPath</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video</strong> (<em>ndarray</em><em> or </em><em>None</em>) – <p>Loaded video sample.</p>
+<p>When <cite>video</cite> is not None, all the other parameters in the function are not considered. If a trimmed video is needed, please use <cite>videoPath</cite> instead.</p>
+<p>If None, <cite>videoPath</cite> will be used to load the video.</p>
+</p></li>
+<li><p><strong>videoPath</strong> (<em>str</em>) – <p>Path to video file.</p>
+<p>Passed to <cite>data</cite> parameter in <cite>Video()</cite>.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float</em>) – <p>Time to start reading the video from.</p>
+<p>Used only when <cite>video</cite> is None.</p>
+</p></li>
+<li><p><strong>duration</strong> (<em>float</em>) – <p>Duration of the video to load.</p>
+<p>Used only when <cite>video</cite> is None.</p>
+</p></li>
+<li><p><strong>destPath</strong> (<em>str</em><em> or </em><em>None</em>) – <p>Path to store shortened video.</p>
+<p>Used only when <cite>video</cite> is None.</p>
+</p></li>
+<li><p><strong>videoOffset</strong> (<em>float</em>) – <p>Number of seconds offset between video and audio files. This parameter is useful when the video is present only for an excerpt of the audio file.</p>
+<dl class="simple">
+<dt>::</dt><dd><p>time in audio + <cite>videoOffset</cite> = time in video</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Object that plays the video.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iPython.display.Video</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>destPath</cite> is None, when <cite>startTime</cite> != 0 or <cite>duration</cite> is not None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plotIntensity">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plotIntensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intensityVals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqXlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Intensity</span> <span class="pre">Contour'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'yellow'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.plotIntensity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to plot a computed intensity contour from <cite>intensityContour()</cite> function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>intensityVals</strong> (<em>ndarray</em>) – Intensity contour from <cite>intensityContour()</cite></p></li>
+<li><p><strong>t</strong> (<em>ndarray</em>) – Time steps corresponding to the <cite>intensityVals</cite> from <cite>intensityContour</cite></p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>Object on which intensity contour is to be plotted</p>
+<p>If None, will plot in <cite>matplotlib.pyplot.gca()</cite>.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float &gt;= 0</em>) – <p>Offset time (in seconds) from where audio is analysed.</p>
+<p>Sent to <cite>drawAnnotation()</cite>.</p>
+</p></li>
+<li><p><strong>duration</strong> (<em>float &gt;= 0</em><em> or </em><em>None</em>) – <p>Duration of audio in the plot.</p>
+<p>If None, will consider the entire audio.</p>
+<p>Sent to <cite>drawAnnotation()</cite>.</p>
+</p></li>
+<li><p><strong>freqXlabels</strong> (<em>int</em>) – Time (in seconds) after which each x ticklabel should occur</p></li>
+<li><p><strong>annotate</strong> (<em>bool</em>) – <p>If true will mark annotations provided in the plot.</p>
+<p>Send to <cite>drawAnnotation()</cite>.</p>
+</p></li>
+<li><p><strong>ylim</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>None</em>) – <p>(min, max) limits for the y axis.</p>
+<p>If None, will be directly interpreted from the data.</p>
+</p></li>
+<li><p><strong>c</strong> (<em>color</em>) – Specifies the colour of the plotted intensity contour.</p></li>
+<li><p><strong>kwargs</strong> (Additional arguements passed to <cite>drawAnnotation()</cite> if <cite>annotate</cite> is True.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – Plot of intensity contour.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.axes.Axes</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If intensityVals is not given</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plotODF">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plotODF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winSize_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">640</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopSize_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">160</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nFFT_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_odf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vocal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cOdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">updatePlot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Onset</span> <span class="pre">Detection</span> <span class="pre">Function'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqXlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.plotODF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots onset detection function if <cite>ax</cite> is provided. Function comes from <cite>getODF()</cite>.</p>
+<p>If <cite>ax</cite> is None, function returns a tuple with 2 arrays - onset detection function values and time stamps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em><em> or </em><em>None</em>) – Loaded audio time series</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – <p>If audio is not None, defines sample rate of audio time series</p>
+<p>If audio is None and audioPath is not None, defines sample rate to load the audio at</p>
+</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em><em>, </em><em>int</em><em>, </em><em>pathlib.Path</em><em>, </em><em>file-like object</em><em> or </em><em>None</em>) – <p>Path to the input file.</p>
+<p>Used only if audio is None. Audio is loaded as mono.</p>
+<p>Sent to <cite>librosa.load()</cite> as <cite>path</cite> parameter.</p>
+<p>If None, <cite>audio</cite> cannot be None.</p>
+</p></li>
+<li><p><strong>odf</strong> (<em>ndarray</em>) – <p>Extracted onset detection function, if already available</p>
+<p>Can be obtained using <cite>getODF()</cite> function</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float; default=0</em>) – Time stamp to consider audio from.</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em> or </em><em>None; default=None</em>) – <p>Duration of the audio to consider.</p>
+<dl class="simple">
+<dt>If <cite>duration</cite> is None</dt><dd><ul>
+<li><p>If <cite>audio</cite> is None, duration is inferred from the audio.</p></li>
+<li><p>If <cite>audio</cite> is None and <cite>audioPath</cite> is not None, the entire song is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – Axes object to plot waveplot in.</p></li>
+<li><p><strong>winSize_odf</strong> (<em>int</em>) – <p>Window size (in frames) used by the onset detection function.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getODF()</cite> function.</p>
+</p></li>
+<li><p><strong>hopSize_odf</strong> (<em>int</em>) – <p>Hop size (in frames) used by the onset detection function.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getODF()</cite> function.</p>
+</p></li>
+<li><p><strong>nFFT_odf</strong> (<em>int</em>) – <p>Size of DFT used in onset detection function.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getODF()</cite> function.</p>
+</p></li>
+<li><p><strong>source_odf</strong> (<em>str</em>) – <p>Defines type of instrument in the audio. Accepted values are:
+- ‘vocal’
+- ‘pakhawaj’</p>
+<p>Used in the <cite>getODF()</cite> only if <cite>odf</cite> is True.</p>
+</p></li>
+<li><p><strong>cOdf</strong> (<em>color</em>) – <p>Colour to plot onset detection function in.</p>
+<p>If <cite>odf</cite> is True, passed to the <cite>getOnsetActivation()</cite> function.</p>
+</p></li>
+<li><p><strong>updatePlot</strong> (<em>bool</em>) – If odf being plotting on figure with waveform, then retain axis labels and properties</p></li>
+<li><p><strong>xticks</strong> (<em>bool</em>) – If True, will add xticklabels to plot.</p></li>
+<li><p><strong>yticks</strong> (<em>bool</em>) – If True, will add yticklabels to plot.</p></li>
+<li><p><strong>xlabel</strong> (<em>bool</em>) – If True, will print xlabel in the plot.</p></li>
+<li><p><strong>ylabel</strong> (<em>bool</em>) – If True will print ylabel in the plot.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title to add to the plot.</p></li>
+<li><p><strong>freqXlabels</strong> (<em>float &gt; 0</em>) – Time (in seconds) after which each x ticklabel occurs in the plot.</p></li>
+<li><p><strong>ylim</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>None</em>) – <p>(min, max) limits for the y axis.</p>
+<p>If None, will be directly interpreted from the data.</p>
+</p></li>
+<li><p><strong>annotate</strong> (<em>boolean</em>) – If True, will annotate markings in either cyclePath or onsetPath with preference to cyclePath.</p></li>
+<li><p><strong>kwargs</strong> (Additional arguements passed to <cite>drawAnnotation()</cite> if <cite>annotate</cite> is True.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes)</em>) – If <cite>ax</cite> is not None, returns a plot</p></li>
+<li><p><strong>(odf_vals, time_vals)</strong> (<em>(ndarray, ndarray)</em>) – If <cite>ax</cite> is None, returns a tuple with ODF values and time stamps.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plotPitch">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plotPitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_cents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqXlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Pitch</span> <span class="pre">Contour'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blue'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.plotPitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the pitch contour</p>
+<p>Plots the pitch contour passed in the <cite>p</cite> parameter, computed from <cite>pitchContour()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>ndarray</em>) – <p>Pitch values (in cents).</p>
+<p>Computed from <cite>pitchContour()</cite></p>
+</p></li>
+<li><p><strong>t</strong> (<em>ndarray</em><em> or </em><em>None</em>) – <p>Time stamps (in seconds) corresponding to each value in <cite>p</cite>.</p>
+<p>If None, assumes time starts from 0 s with 0.01 s hops for each value in <cite>p</cite>.</p>
+<p>Computed from <cite>pitchContour()</cite>.</p>
+</p></li>
+<li><p><strong>is_cents</strong> (<em>boolean; default=False</em>) – <p>If True, indicates that <cite>p</cite> is in Cents.</p>
+<p>If False, indicates that <cite>p</cite> is in Hertz.</p>
+</p></li>
+<li><p><strong>notes</strong> (<em>list</em><em> or </em><em>None</em>) – <p>list of dictionaries with keys (<code class="docutils literal notranslate"><span class="pre">cents</span></code> or <code class="docutils literal notranslate"><span class="pre">hertz</span></code>) and <code class="docutils literal notranslate"><span class="pre">label</span></code> for each note present in the raga of the audio. Uses the <code class="docutils literal notranslate"><span class="pre">label</span></code> value as a yticklabel in the plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="p">:</span>
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;P_&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cents&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">500</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;D_&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cents&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">300</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cents&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+        <span class="o">...</span>
+        <span class="p">]</span>
+
+<span class="n">If</span> <span class="kc">None</span><span class="p">,</span> <span class="n">uses</span> <span class="n">the</span> <span class="n">cents</span><span class="o">/</span><span class="n">Hz</span> <span class="n">values</span> <span class="k">as</span> <span class="n">the</span> <span class="n">yticklabels</span><span class="o">.</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>Object on which pitch contour is to be plotted</p>
+<p>If None, will plot in <cite>matplotlib.pyplot.gca()</cite>.</p>
+</p></li>
+<li><p><strong>freqXlabels</strong> (<em>int</em>) – Time (in seconds) after which each x ticklabel should occur</p></li>
+<li><p><strong>xticks</strong> (<em>bool</em>) – If True, will print x ticklabels in the plot.</p></li>
+<li><p><strong>yticks</strong> (<em>bool</em>) – If True, will print y ticklabels in the plot.</p></li>
+<li><p><strong>xlabel</strong> (<em>bool</em>) – If True, will add label to x axis.</p></li>
+<li><p><strong>ylabel</strong> (<em>bool</em>) – If True, will add label to y axis.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title to add to the plot.</p></li>
+<li><p><strong>annotate</strong> (<em>bool</em>) – If True, will add tala-related/onset annotations to the plot .</p></li>
+<li><p><strong>ylim</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>None</em>) – <p>(min, max) limits for the y axis.</p>
+<p>If None, y limits will be directly interpreted from the data.</p>
+</p></li>
+<li><p><strong>c</strong> (<em>color</em>) – Colour of the pitch contour plotted.</p></li>
+<li><p><strong>kwargs</strong> (additional arguements passed to <cite>drawAnnotation()</cite> if <cite>annotate</cite> is True.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – Plot of pitch contour.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.axes.Axes</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>p</cite> is None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plotSpectrogram">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plotSpectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_dB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">160</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Blues'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqXlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqYlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Spectrogram'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.plotSpectrogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots spectrogram</p>
+<p>Uses <cite>librosa.display.specshow()</cite> to plot a spectrogram from a computed STFT. Annotations can be added is <cite>annotate</cite> is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_dB</strong> (<em>ndarray</em>) – STFT of audio. Computed in <cite>spectrogram()</cite>.</p></li>
+<li><p><strong>t</strong> (<em>ndarray</em><em> or </em><em>None</em>) – <p>Time segments corresponding to <cite>X_dB</cite>.</p>
+<p>If None, will assign time steps from 0 (in seconds).</p>
+</p></li>
+<li><p><strong>f</strong> (<em>ndarray</em>) – <p>Frequency values. Computed in <cite>spectrogram()</cite>.</p>
+<p>If None, will infer frequency values in a linear scale.</p>
+</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – Sample rate of audio processed in <cite>spectrogram()</cite>.</p></li>
+<li><p><strong>hopSize</strong> (<em>int &gt; 0</em>) – Size of hop for STFT (in frames)</p></li>
+<li><p><strong>cmap</strong> (<em>matplotlib.colors.Colormap</em><em> or </em><em>str</em>) – <p>Colormap to use to plot spectrogram.</p>
+<p>Sent as a parameter to <cite>plotSpectrogram</cite>.</p>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>Axes to plot spectrogram in.</p>
+<p>If None, plots the spectrogram returned by <cite>plt.gca()</cite>.</p>
+</p></li>
+<li><p><strong>freqXlabels</strong> (<em>float &gt; 0</em>) – Time (in seconds) after which each x label occurs in the plot</p></li>
+<li><p><strong>freqYlabels</strong> (<em>float &gt; 0</em>) – Number of Hz after which y label should appear on the Y axis.</p></li>
+<li><p><strong>xticks</strong> (<em>bool</em>) – If True, will add xticklabels to plot.</p></li>
+<li><p><strong>yticks</strong> (<em>bool</em>) – If True, will add yticklabels to plot.</p></li>
+<li><p><strong>xlabel</strong> (<em>bool</em>) – If True, will print xlabel in the plot.</p></li>
+<li><p><strong>ylabel</strong> (<em>bool</em>) – If True will print ylabel in the plot.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title to add to the plot.</p></li>
+<li><p><strong>annotate</strong> (<em>bool</em>) – If True, will annotate markings in either cyclePath or onsetPath with preference to cyclePath.</p></li>
+<li><p><strong>ylim</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>None</em>) – <p>(min, max) limits for the y axis.</p>
+<p>If None, the range is set to (0, sr//2)</p>
+</p></li>
+<li><p><strong>kwargs</strong> (Additional arguements provided to <cite>drawAnnotation()</cite> if <cite>annotate</cite> is True.) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plot_hand">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plot_hand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotationFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vidFps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqXlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Wrist</span> <span class="pre">Position</span> <span class="pre">Vs.</span> <span class="pre">Time'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vidOffset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lWristCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LWrist'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rWristCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RWrist'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wristAxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.plot_hand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to plot hand movement.</p>
+<p>Using Openpose annotations, this function plots the height of each hand’s wrist vs time.</p>
+<p>If <cite>ax</cite> is None, this will on <cite>plt.gca()</cite>, i.e. the current axes being used</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>annotationFile</strong> (<em>str</em>) – File path to Openpose annotations.</p></li>
+<li><p><strong>startTime</strong> (<em>float</em>) – Start time for x labels in the plot (time stamp with respect to the audio signal).</p></li>
+<li><p><strong>duration</strong> (<em>float</em>) – Duration of audio to consider for the plot.</p></li>
+<li><p><strong>vidFps</strong> (<em>float</em>) – FPS of the video data used in openpose annotation.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – </p></li>
+<li><p><strong>plotted.</strong> (<em>Axes object on which plot is to be</em>) – </p></li>
+<li><p><strong>None</strong> (<em>If</em>) – </p></li>
+<li><p><strong>plt.gca</strong><strong>(</strong><strong>)</strong><strong>.</strong> (<em>uses the current Axes object in use with</em>) – </p></li>
+<li><p><strong>freqXlabels</strong> (<em>int &gt; 0</em>) – Time (in seconds) after which each x ticklabel occurs</p></li>
+<li><p><strong>xticks</strong> (<em>bool</em>) – If True, will add xticklabels to plot.</p></li>
+<li><p><strong>yticks</strong> (<em>bool</em>) – If True, will add yticklabels to plot.</p></li>
+<li><p><strong>xlabel</strong> (<em>bool</em>) – If True, will print xlabel in the plot.</p></li>
+<li><p><strong>ylabel</strong> (<em>bool</em>) – If True will print ylabel in the plot.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title to add to the plot.</p></li>
+<li><p><strong>videoOffset</strong> (<em>float</em>) – <dl class="simple">
+<dt>Number of seconds offset between video and audio::</dt><dd><p>time in audio + videioOffset = time in video</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>lWristCol</strong> (<em>str</em>) – Name of the column with left wrist data in <cite>annotationFile</cite>.</p></li>
+<li><p><strong>rWristCol</strong> (<em>str</em>) – Name of the column with right wrist data in <cite>annotationFile</cite>.</p></li>
+<li><p><strong>wristAxis</strong> (<em>str</em>) – Level 2 header in the <cite>annotationFile</cite> denoting axis along which movement is plotted (x, y or z axes).</p></li>
+<li><p><strong>annotate</strong> (<em>bool</em>) – If True will mark annotations provided on the plot.</p></li>
+<li><p><strong>ylim</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>None</em>) – <p>(min, max) limits for the y axis.</p>
+<p>If None, will be directly interpreted from the data.</p>
+</p></li>
+<li><p><strong>kwargs</strong> (Additional arguements passed to <cite>drawAnnotation()</cite> if <cite>annotate</cite> is True.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – Axes object with plot</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.axes.Axes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.readCycleAnnotation">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">readCycleAnnotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cyclePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numDiv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Time'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Cycle'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.readCycleAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to read cycle annotation and add divisions between markings if required.</p>
+<p>This function reads the timestamps of provided annotations and adds <cite>numDiv</cite> ‘computed’ annotations between each provided annotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cyclePath</strong> (<em>str</em><em>, </em><em>path object</em><em> or </em><em>file-like object</em>) – <p>String path, os.PathLike object or file-like object (containing a read() method) pointing to the cycle annotation csv.</p>
+<p>This value is passed to <cite>pandas.read_csv()</cite>.</p>
+</p></li>
+<li><p><strong>numDiv</strong> (<em>int &gt;= 0</em>) – Number of equally spaced time stamps to add between consecutive provided annotations.</p></li>
+<li><p><strong>startTime</strong> (<em>float</em>) – Start time of audio being analysed.</p></li>
+<li><p><strong>duration</strong> (<em>float</em>) – Duration of the audio to be analysed.</p></li>
+<li><p><strong>timeCol</strong> (<em>str</em>) – Column name of timestamps in cycle annotation file.</p></li>
+<li><p><strong>labelCol</strong> (<em>str</em><em> or </em><em>None</em>) – <p>Column name of labels for the annotations in the annotation file.</p>
+<p>If None, only <cite>timeCol</cite> values will be returned.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul>
+<li><p><strong>provided</strong> (<em>pandas.DataFrame</em>) – Data frame contains the time stamps on annotations. If <cite>labelCol</cite> is not None, also returns respective labels of all provided annotations.</p></li>
+<li><p><strong>computed</strong> (<em>list</em>) – Timestamps of computed annotations (i.e. annotations computed between consecutive provided annotations).</p>
+<p>If <cite>numDiv</cite> is 0 or number of provided annotations is 1, an empty list is returned</p>
+</li>
+<li><p><em>.. note::</em> – If there are no provided annotations present during the relevant duration of audio, the function will return (None, None)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.readOnsetAnnotation">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">readOnsetAnnotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">onsetPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Inst'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Label'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.readOnsetAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to read onset annotations.</p>
+<p>Reads an onset annotation csv file and returns the timestamps and annotation labels for annotations within a given time duration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>onsetPath</strong> (<em>str</em><em>, </em><em>path object</em><em> or </em><em>file-like object</em>) – <p>String path, os.PathLike object or file-like object (containing a read() method) pointing to the onset annotation csv.</p>
+<p>This value is passed to <cite>pandas.read_csv()</cite>.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float</em>) – Start time of audio being analysed.</p></li>
+<li><p><strong>duration</strong> (<em>float</em>) – Duration of the audio to be analysed.</p></li>
+<li><p><strong>timeCol</strong> (<em>str</em>) – Column name of timestamps in onset annotation file.</p></li>
+<li><p><strong>labelCol</strong> (<em>str</em><em> or </em><em>None</em>) – <p>Column name in the onset file to take onset labels from.</p>
+<p>If None, will return only values from the column <cite>timeCol</cite>.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>provided</strong> – Dataframe with time stamps and labels (only if <cite>labelCol</cite> is not None) of the onsets</p>
+<p>If <cite>labelCol</cite> is None, it will return only annotation time stamps.</p>
+<p>If no onsets are present in the given time duration, None is returned.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.spectrogram">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">spectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audioPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">640</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">160</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nFFT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.spectrogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes spectrogram from the audio sample</p>
+<p>Returns a plotted spectrogram if ax is not None, else returns the computed STFT on the audio.</p>
+<p>Uses <cite>librosa.display.specshow()</cite> to plot the spectrogram.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio</strong> (<em>ndarray</em><em> or </em><em>None</em>) – <p>Loaded audio time series</p>
+<p>Audio signal is converted to mono to compute the spectrogram.</p>
+<p>If None, <cite>audioPath</cite> can not be None.</p>
+</p></li>
+<li><p><strong>sr</strong> (<em>number &gt; 0; default=16000</em>) – <p>If audio is not None, defines sample rate of audio time series.</p>
+<p>If audio is None and audioPath is not None, defines sample rate to load the audio at.</p>
+</p></li>
+<li><p><strong>audioPath</strong> (<em>str</em><em>, </em><em>int</em><em>, </em><em>pathlib.Path</em><em>, </em><em>file-like object</em><em> or </em><em>None</em>) – <p>Path to the input file.</p>
+<p>Used only if audio is None. Audio is loaded as mono.</p>
+<p>Sent to <cite>librosa.load()</cite> as <cite>path</cite> parameter.</p>
+<p>If None, <cite>audio</cite> cannot be None.</p>
+</p></li>
+<li><p><strong>startTime</strong> (<em>float; default=0</em>) – Time stamp to consider audio from.</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em> or </em><em>None; default=None</em>) – <p>Duration of the audio to consider.</p>
+<dl class="simple">
+<dt>If <cite>duration</cite> is None</dt><dd><ul>
+<li><p>If <cite>audio</cite> is None, duration is inferred from the audio.</p></li>
+<li><p>If <cite>audio</cite> is None and <cite>audioPath</cite> is not None, the entire song is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>winSize</strong> (<em>int &gt; 0</em>) – Size of window for STFT (in frames)</p></li>
+<li><p><strong>hopSize</strong> (<em>int &gt; 0</em>) – Size of hop for STFT (in frames)</p></li>
+<li><p><strong>nFFT</strong> (<em>int</em><em> or </em><em>None</em>) – <p>DFT size</p>
+<p>If nFFT is None, it takes the value of the closest power of 2 &gt;= winSize (in samples).</p>
+</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em> or </em><em>None</em>) – <p>Axes to plot spectrogram in.</p>
+<p>If None, returns (sample frequencies, segment times, STFT) of audio sample</p>
+</p></li>
+<li><p><strong>amin</strong> (<em>float &gt; 0</em>) – <p>Minimum threshold for <cite>abs(S)</cite> and <cite>ref</cite> in <cite>librosa.power_to_db()</cite>. Controls the contrast of the spectrogram.</p>
+<p>Passed into <cite>librosa.power_to_db()</cite> function.</p>
+</p></li>
+<li><p><strong>kwargs</strong> (additional arguements passed to <cite>plotSpectrogram()</cite>.) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>ax</strong> – If <cite>ax</cite> is not None, returns a plot of the spectrogram computed</p>
+<p>If <cite>ax</cite> is None, returns a tuple with (sample frequencies, segment times, STFT of the audio (in dB)) computed by <cite>scipy.signal.stft()</cite>.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.axes.Axes or (ndarray, ndarray, ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.subBandEner">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">subBandEner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.subBandEner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes spectral sub-band energy by summing squared magnitude values of STFT over specified spectral band (suitable for vocal onset detection).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em>) – STFT of an audio signal x</p></li>
+<li><p><strong>fs</strong> (<em>int</em><em> or </em><em>float</em>) – Sampling rate</p></li>
+<li><p><strong>band</strong> (<em>list</em><em> or </em><em>tuple</em><em> or </em><em>ndarray</em>) – Edge frequencies (in Hz) of the sub-band of interest</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>sbe</strong> – Array with each value representing the magnitude STFT values in a short-time frame squared &amp; summed over the sub-band</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.subsequences">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">subsequences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winSize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopSize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.subsequences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split signal into shorter windowed segments with a specified hop between consecutive windows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – Input signal</p></li>
+<li><p><strong>winSize</strong> (<em>int</em><em> or </em><em>float</em>) – Size of short-time window in seconds</p></li>
+<li><p><strong>hopSize</strong> (<em>int</em><em> or </em><em>float</em>) – Hop duration in seconds between consecutive windows</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>x_sub</strong> – 2d array containing windowed segments</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.tempoPeriodLikelihood">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">tempoPeriodLikelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ACF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tempoPeriodLikelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute from ACF, the likelihood of each ACF lag being the time-period of the tempo. Likelihood is obtained by taking a dot product between the ACF vector and a comb-filter (see [3] for details) in each time frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ACF</strong> (<em>ndarray</em>) – Short-time ACF matrix of a signal</p></li>
+<li><p><strong>norm</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tempo_period_candidates</strong> – 2d array with a likelihood value for each lag in each time frame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.toDB">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">toDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.toDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies logarithmic (base 10) transformation (based on [1])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – Input signal</p></li>
+<li><p><strong>C</strong> (<em>int</em><em> or </em><em>float</em>) – Scaling constant</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>log-scaled x</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.viterbiSmoothing">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">viterbiSmoothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tempoPeriodLikelihood</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hopDur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transitionPenalty</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempoRange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(30,</span> <span class="pre">100)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.viterbiSmoothing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply viterbi smoothing on tempo period (lag) likelihood values to find optimum sequence of tempo values across audio frames (based on [3]).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tempoPeriodLikelihood</strong> (<em>ndarray</em>) – Likelihood values at each lag (tempo period)</p></li>
+<li><p><strong>hopDur</strong> (<em>int</em><em> or </em><em>float</em>) – Short-time analysis hop duration in seconds between samples of ACF vector (not hop duration between windowed signal segments taken for ACF)</p></li>
+<li><p><strong>transitionPenalty</strong> (<em>int</em><em> or </em><em>float</em>) – Penalty factor multiplied with the magnitude of tempo change between frames; high value penalises larger jumps more, suitable for metric tempo that changes gradually across a concert and not abruptly</p></li>
+<li><p><strong>tempoRange</strong> (<em>tuple</em><em> or </em><em>list</em>) – Expected min and max tempo in BPM</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tempo_period_smoothed</strong> – Array of chosen tempo period in each time frame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">rtd-osf-test</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">rtd-osf-test</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils_cnn.html">utils_cnn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils_fmp.html">utils_fmp module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">rtd-osf-test</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">rtd-osf-test</a></li>
+      <li>Next: <a href="utils_cnn.html" title="next chapter">utils_cnn module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, rohit, nithya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
