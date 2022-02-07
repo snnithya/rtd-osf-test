@@ -28,9 +28,9 @@ sns.set_theme(rc={"xtick.bottom" : True, "ytick.left" : False, "xtick.major.size
 def __check_axes(axes):
 	"""Check if ``axes`` is an instance of an ``matplotlib.axes.Axes`` object. If not, use ``plt.gca()``.
 	
-	This function is a modified version from [1]_.
+	This function is a modified version from [#]_.
 
-	.. [1] McFee, Brian, Colin Raffel, Dawen Liang, Daniel PW Ellis, Matt McVicar, Eric Battenberg, and Oriol Nieto. “librosa: Audio and music signal analysis in python.” In Proceedings of the 14th python in science conference, pp. 18-25. 2015.
+	.. [#] McFee, Brian, Colin Raffel, Dawen Liang, Daniel PW Ellis, Matt McVicar, Eric Battenberg, and Oriol Nieto. “librosa: Audio and music signal analysis in python.” In Proceedings of the 14th python in science conference, pp. 18-25. 2015.
 
 	"""
 	
